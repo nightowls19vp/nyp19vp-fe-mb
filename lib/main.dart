@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
+
+import 'login/components/text_field.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,19 +22,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late final TextEditingController emailController = TextEditingController()
-    ..addListener(() {
-      if (emailController.text.isEmpty) {
-        setState(() {});
-      }
-    });
+  // late final TextEditingController emailController = TextEditingController()
+  //   ..addListener(() {
+  //     if (emailController.text.isEmpty) {
+  //       setState(() {});
+  //     }
+  //   });
 
-  late final TextEditingController pwdController = TextEditingController()
-    ..addListener(() {
-      if (pwdController.text.isEmpty) {
-        setState(() {});
-      }
-    });
+  // late final TextEditingController pwdController = TextEditingController()
+  //   ..addListener(() {
+  //     if (pwdController.text.isEmpty) {
+  //       setState(() {});
+  //     }
+  //   });
+
+  final _formKey = GlobalKey<FormState>();
+
+  late bool show = false;
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,66 +55,63 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontSize: 30,
                       fontWeight: FontWeight.bold)),
             ),
-            Container(
-              height: 250,
-              width: 300,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                        padding: EdgeInsets.only(
-                            left: 30.0, top: 15.0, right: 30.0, bottom: 15.0),
-                        child: TextFormField(
-                          // initialValue: 'Input your email',\
-                          controller: emailController,
-                          maxLength: 20,
-                          decoration: InputDecoration(
-                            labelText: 'Email',
-                            hintText: 'email@xyz.com',
-                            labelStyle: TextStyle(
-                              color: Color(0xFF6200EE),
-                            ),
-                            helperText: 'Enter your email',
-                            suffixIcon: emailController.text.isEmpty
-                                ? null
-                                : IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.clear),
-                                  ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF6200EE)),
-                            ),
-                          ),
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(
-                            left: 30.0, top: 15.0, right: 30.0, bottom: 15.0),
-                        child: TextFormField(
-                          // initialValue: 'Input text',
-                          controller: pwdController,
-                          maxLength: 20,
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            labelStyle: TextStyle(
-                              color: Color(0xFF6200EE),
-                            ),
-                            helperText: 'Enter your password',
-                            suffixIcon: pwdController.text.isEmpty
-                                ? null
-                                : IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.clear),
-                                  ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF6200EE)),
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Container(
+                  height: 300,
+                  width: 500,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 20.0,
+                                  top: 10.0,
+                                  right: 20.0,
+                                  bottom: 10.0),
+                              child: CustomTextField(label: 'Email')),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 20.0,
+                                  top: 10.0,
+                                  right: 20.0,
+                                  bottom: 10.0),
+                              child: CustomTextField(label: 'Password')),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 20.0),
+                              child: Text(
+                                'Forgot password?',
+                                style: TextStyle(color: Color(0xFF49454F)),
+                              ),
                             ),
                           ),
-                        )),
-                  ]),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 16.0),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                // Validate returns true if the form is valid, or false otherwise.
+                                if (_formKey.currentState!.validate()) {
+                                  // If the form is valid, display a snackbar. In the real world,
+                                  // you'd often call a server or save the information in a database.
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text('Processing Data')),
+                                  );
+                                }
+                              },
+                              child: const Text('Submit'),
+                            ),
+                          ),
+                        ]),
+                  )),
             ),
           ],
         )));
