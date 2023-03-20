@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:nyp19vp_mb/login/views_models/auth_view_model.dart';
 import 'package:text_divider/text_divider.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
-import 'package:provider/provider.dart';
 
-import '../../register/views/register_screen.dart';
-import '../components/login_form.dart';
+import '../../login/views/login_screen.dart';
+import '../components/register_form.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +27,20 @@ class LoginScreen extends StatelessWidget {
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Đăng nhập',
+                  Text('Đăng ký',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
                   SizedBox(
-                    child: LoginForm(),
+                    child: RegisterForm(),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 20.0, right: 20.0, bottom: 10.0),
                     child: SizedBox(
+                      // width: 350,
+                      // height: 20,
                       child: TextDivider.horizontal(
                         text: const Text(
                           'Hoặc',
@@ -62,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                         buttonType: SocialLoginButtonType.generalLogin,
                         // backgroundColor: Color.fromARGB(255, 24, 119, 242),
                         backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                        text: 'Đăng nhập với Google',
+                        text: 'Đăng ký với Google',
                         textColor: Color(0xFF49454F),
                         imagePath: 'assets/images/google.png',
                         imageWidth: 33,
@@ -76,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                       buttonType: SocialLoginButtonType.generalLogin,
                       // backgroundColor: Color.fromARGB(255, 24, 119, 242),
                       backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                      text: 'Đăng nhập với Facebook',
+                      text: 'Đăng ký với Facebook',
                       textColor: Color(0xFF49454F),
                       imagePath: 'assets/images/facebook.png',
                       imageWidth: 36,
@@ -91,26 +91,36 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Chưa có tài khoản?',
+                            'Đã có tài khoản?',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                             ),
                           ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(left: 20.0),
+                          //   child: Text(
+                          //     'Đăng ký',
+                          //     style: TextStyle(
+                          //         color: Colors.white,
+                          //         fontSize: 16,
+                          //         fontWeight: FontWeight.bold),
+                          //   ),
+                          // ),
                           Padding(
                               padding: EdgeInsets.only(left: 20.0),
                               child: GestureDetector(
                                 onTap: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return RegisterScreen();
+                                    return LoginScreen();
                                   }));
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     Text(
-                                      'Đăng ký',
+                                      'Đăng nhập',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16,
