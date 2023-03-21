@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
-import 'package:nyp19vp_mb/utils/text_field.dart';
+import 'package:nyp19vp_mb/widgets/text_field.dart';
 import 'package:provider/provider.dart';
 import '../views/forgot_pwd_page.dart';
 import '../views_models/auth_view_model.dart';
@@ -94,7 +94,7 @@ class _LoginFormState extends State<LoginForm> {
                             child: ElevatedButton(
                               onPressed: () {
                                 Map data = {
-                                  'email': _emailController.text.toString(),
+                                  'username': _emailController.text.toString(),
                                   'password': _pwdController.text.toString(),
                                 };
 

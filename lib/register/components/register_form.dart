@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
-import 'package:nyp19vp_mb/utils/text_field.dart';
+import 'package:nyp19vp_mb/widgets/text_field.dart';
 
 class RegisterForm extends StatefulWidget {
   @override

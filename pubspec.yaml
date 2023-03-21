@@ -35,6 +35,7 @@ dependencies:
   form_builder_validators: ^8.5.0
   hexcolor: ^3.0.1
   text_divider: ^1.0.0
+  another_flushbar: ^1.12.29
   social_login_buttons: ^1.0.7
   provider: ^6.0.5
   http: ^0.13.5
