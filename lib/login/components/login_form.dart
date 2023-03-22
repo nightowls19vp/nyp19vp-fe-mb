@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
 import 'package:nyp19vp_mb/widgets/text_field.dart';
 import 'package:provider/provider.dart';
 import '../views/forgot_pwd_page.dart';
 import '../views_models/auth_view_model.dart';
+import 'package:nyp19vp_mb/res/colors.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -34,7 +34,7 @@ class _LoginFormState extends State<LoginForm> {
           child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(7),
+                borderRadius: BorderRadius.circular(15),
               ),
               child: Form(
                 key: _formKey,
@@ -47,25 +47,19 @@ class _LoginFormState extends State<LoginForm> {
                             padding: EdgeInsets.only(
                                 left: 20.0, right: 20.0, bottom: 30.0),
                             child: CustomTextField(
-                              labelText: 'Email',
-                              hintText: 'name@example.com',
+                              labelText: 'Tên đăng nhập',
+                              hintText: '',
                               controller: _emailController,
-                            )
-
-                            // CustomTextField(
-                            //   key: Key('emailFieldKey'),
-                            //   controller: _emailController,
-                            //   labelText: 'Email',
-                            //   hintText: 'name@example.com',
-                            // )
-                            ),
+                            )),
                         Padding(
                             padding: EdgeInsets.only(
                                 left: 20.0, right: 20.0, bottom: 20.0),
-                            child: CustomTextField(
-                              labelText: 'Mật khẩu',
-                              hintText: '',
-                              controller: _pwdController,
+                            child: SizedBox(
+                              child: CustomTextField(
+                                labelText: 'Mật khẩu',
+                                hintText: '',
+                                controller: _pwdController,
+                              ),
                             )),
                         Padding(
                             padding: EdgeInsets.only(right: 20.0),
@@ -81,7 +75,7 @@ class _LoginFormState extends State<LoginForm> {
                                 children: [
                                   Text('Quên mật khẩu?',
                                       style: TextStyle(
-                                        color: Color(0xFF49454F),
+                                        color: AppColors.text,
                                         fontSize: 14,
                                       )),
                                 ],
@@ -107,8 +101,12 @@ class _LoginFormState extends State<LoginForm> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFF6750A4),
-                                minimumSize: const Size.fromHeight(50), // NEW
+                                primary: AppColors.primary,
+                                minimumSize: const Size.fromHeight(50),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(10), // <-- Radius
+                                ),
                               ),
                             ),
                           ),

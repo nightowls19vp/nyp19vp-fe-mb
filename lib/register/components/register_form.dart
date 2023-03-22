@@ -4,6 +4,8 @@ import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
 import 'package:nyp19vp_mb/widgets/text_field.dart';
 
+import '../../res/colors.dart';
+
 class RegisterForm extends StatefulWidget {
   @override
   State<RegisterForm> createState() => _RegisterFormState();
@@ -12,6 +14,8 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
 
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _pwdController = TextEditingController();
@@ -28,27 +32,43 @@ class _RegisterFormState extends State<RegisterForm> {
               left: 30.0, top: 15.0, right: 30.0, bottom: 15.0),
           child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(7),
+                color: Color(0xFFFFFFFF),
+                borderRadius: BorderRadius.circular(14),
               ),
               child: Form(
                 key: _formKey,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  padding: EdgeInsets.only(bottom: 20.0),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
                             padding: EdgeInsets.only(
-                                left: 20.0, right: 20.0, bottom: 30.0),
+                                left: 20.0, right: 20.0, bottom: 15.0),
+                            child: CustomTextField(
+                              labelText: 'Tên đăng nhập',
+                              hintText: '',
+                              controller: _usernameController,
+                            )),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                left: 20.0, right: 20.0, bottom: 15.0),
+                            child: CustomTextField(
+                              labelText: 'Họ và tên',
+                              hintText: '',
+                              controller: _nameController,
+                            )),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                left: 20.0, right: 20.0, bottom: 15.0),
                             child: CustomTextField(
                               labelText: 'Email',
-                              hintText: 'name@example.com',
+                              hintText: '',
                               controller: _emailController,
                             )),
                         Padding(
                             padding: EdgeInsets.only(
-                                left: 20.0, right: 20.0, bottom: 30.0),
+                                left: 20.0, right: 20.0, bottom: 15.0),
                             child: CustomTextField(
                               labelText: 'Số điện thoại',
                               hintText: '',
@@ -56,7 +76,7 @@ class _RegisterFormState extends State<RegisterForm> {
                             )),
                         Padding(
                             padding: EdgeInsets.only(
-                                left: 20.0, right: 20.0, bottom: 20.0),
+                                left: 20.0, right: 20.0, bottom: 15.0),
                             child: CustomTextField(
                               labelText: 'Mật khẩu',
                               hintText: '',
@@ -64,15 +84,14 @@ class _RegisterFormState extends State<RegisterForm> {
                             )),
                         Padding(
                             padding: EdgeInsets.only(
-                                left: 20.0, right: 20.0, bottom: 20.0),
+                                left: 20.0, right: 20.0, bottom: 35.0),
                             child: CustomTextField(
                               labelText: 'Nhập lại mật khẩu',
                               hintText: '',
                               controller: _retypePwdController,
                             )),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: 20.0, top: 20.0, right: 20.0, bottom: 0),
+                          padding: EdgeInsets.only(left: 20.0, right: 20.0),
                           child: SizedBox(
                             child: ElevatedButton(
                               onPressed: () {
@@ -87,8 +106,12 @@ class _RegisterFormState extends State<RegisterForm> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFF6750A4),
-                                minimumSize: const Size.fromHeight(50), // NEW
+                                primary: AppColors.primary,
+                                minimumSize: const Size.fromHeight(50),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(10), // <-- Radius
+                                ), // NEW
                               ),
                             ),
                           ),

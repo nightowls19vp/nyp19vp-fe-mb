@@ -3,9 +3,11 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:nyp19vp_mb/login/views_models/auth_view_model.dart';
-import 'package:text_divider/text_divider.dart';
-import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:provider/provider.dart';
+
+import 'package:social_login_buttons/social_login_buttons.dart';
+import 'package:nyp19vp_mb/res/colors.dart';
+import 'package:text_divider/text_divider.dart';
 
 import '../../register/views/register_screen.dart';
 import '../components/login_form.dart';
@@ -25,13 +27,13 @@ class LoginScreen extends StatelessWidget {
             width: screenWidth,
             height: screenHeight,
             child: Scaffold(
-              backgroundColor: Color.fromARGB(255, 153, 169, 232),
+              backgroundColor: AppColors.background,
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Đăng nhập',
                       style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.primary,
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
                   SizedBox(
@@ -45,12 +47,12 @@ class LoginScreen extends StatelessWidget {
                         text: const Text(
                           'Hoặc',
                           style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
+                            color: AppColors.primary,
                             // fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
                         ),
-                        color: Colors.white,
+                        color: AppColors.primary,
                         thickness: 1.0,
                       ),
                     ),
@@ -63,10 +65,10 @@ class LoginScreen extends StatelessWidget {
                         // backgroundColor: Color.fromARGB(255, 24, 119, 242),
                         backgroundColor: Color.fromARGB(255, 255, 255, 255),
                         text: 'Đăng nhập với Google',
-                        textColor: Color(0xFF49454F),
+                        textColor: AppColors.text,
                         imagePath: 'assets/images/google.png',
                         imageWidth: 33,
-                        borderRadius: 7,
+                        borderRadius: 10,
                         onPressed: () {},
                       )),
                   Padding(
@@ -75,12 +77,13 @@ class LoginScreen extends StatelessWidget {
                     child: SocialLoginButton(
                       buttonType: SocialLoginButtonType.generalLogin,
                       // backgroundColor: Color.fromARGB(255, 24, 119, 242),
-                      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                      backgroundColor: Color(0xFFFFFFFF),
                       text: 'Đăng nhập với Facebook',
-                      textColor: Color(0xFF49454F),
+                      textColor: AppColors.text,
+                      height: 50,
                       imagePath: 'assets/images/facebook.png',
                       imageWidth: 36,
-                      borderRadius: 7,
+                      borderRadius: 10,
                       onPressed: () {},
                     ),
                   ),
@@ -93,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                           Text(
                             'Chưa có tài khoản?',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.primary,
                               fontSize: 16,
                             ),
                           ),
@@ -112,7 +115,7 @@ class LoginScreen extends StatelessWidget {
                                     Text(
                                       'Đăng ký',
                                       style: TextStyle(
-                                          color: Colors.white,
+                                          color: AppColors.primary,
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold),
                                     ),
