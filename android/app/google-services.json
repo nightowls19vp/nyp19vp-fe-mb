@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "816357236920",
+    "project_id": "household-management-sys-76742",
+    "storage_bucket": "household-management-sys-76742.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816357236920:android:9007b63335995f2d4d144d",
+        "android_client_info": {
+          "package_name": "com.example.nyp19vp_mb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "816357236920-i8kqj5ls43beebuivj8qh25udp1j89up.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCvbFM_jaJhrRZc__N4AP5fAT22iVToP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "816357236920-gg3g5s38gdd3rl9hsbokqmj8k61e4a1e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

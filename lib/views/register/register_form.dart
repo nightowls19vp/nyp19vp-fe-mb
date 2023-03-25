@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
 import 'package:nyp19vp_mb/widgets/text_field.dart';
@@ -54,7 +53,7 @@ class _RegisterFormState extends State<RegisterForm> {
                             padding: EdgeInsets.only(
                                 left: 20.0, right: 20.0, bottom: 15.0),
                             child: CustomTextField(
-                              labelText: 'Họ và tên',
+                              labelText: 'Họ tên',
                               hintText: '',
                               controller: _nameController,
                             )),

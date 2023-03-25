@@ -3,8 +3,8 @@ import 'package:nyp19vp_mb/utils/routes/routes.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 import 'package:provider/provider.dart';
 
-import 'login/views/login_screen.dart';
-import 'login/views_models/auth_view_model.dart';
+import 'views/login/login_screen.dart';
+import 'view_models/login/login_view_model.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
         MultiProvider(
             providers: [
-          ChangeNotifierProvider(create: (_) => AuthViewModel()),
+          ChangeNotifierProvider(create: (_) => LoginViewModel()),
         ],
             child: MaterialApp(
               title: 'Flutter Demo',

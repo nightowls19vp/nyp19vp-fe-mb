@@ -3,8 +3,8 @@ import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
 import 'package:nyp19vp_mb/widgets/text_field.dart';
 import 'package:provider/provider.dart';
-import '../views/forgot_pwd_page.dart';
-import '../views_models/auth_view_model.dart';
+import 'forgot_pwd_page.dart';
+import '../../view_models/login/login_view_model.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
 
 class LoginForm extends StatefulWidget {
@@ -23,7 +23,7 @@ class _LoginFormState extends State<LoginForm> {
   late bool show = false;
 
   Widget build(BuildContext context) {
-    final authViewModel = Provider.of<AuthViewModel>(context);
+    final loginViewModel = Provider.of<LoginViewModel>(context);
 
     return Center(
         child: Column(
@@ -87,12 +87,16 @@ class _LoginFormState extends State<LoginForm> {
                           child: SizedBox(
                             child: ElevatedButton(
                               onPressed: () {
-                                Map data = {
-                                  'username': _emailController.text.toString(),
-                                  'password': _pwdController.text.toString(),
-                                };
+                                if (_formKey.currentState!.validate()) {
+                                  Map data = {
+                                    'username':
+                                        _emailController.text.toString(),
+                                    'password': _pwdController.text.toString(),
+                                  };
 
-                                authViewModel.loginApi(data, context);
+                                  loginViewModel.loginApi(data, context);
+                                }
+
                                 // Navigator.pushNamed(context, RoutesName.home);
                               },
                               child: Text(

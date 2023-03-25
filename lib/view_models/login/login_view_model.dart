@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:nyp19vp_mb/login/respository/auth_repository.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../utils/flush_bar.dart';
+import '../../models/user_model.dart';
+import '../../repositories/auth_repository.dart';
 
-class AuthViewModel with ChangeNotifier {
+class LoginViewModel with ChangeNotifier {
   final _authRepo = AuthRepository();
+
+  late User _user;
+  User get user => _user;
 
   Future<void> loginApi(dynamic data, BuildContext context) async {
     _authRepo.loginApi(data).then((value) {

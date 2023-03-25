@@ -7,8 +7,8 @@ import 'package:text_divider/text_divider.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
 
-import '../../login/views/login_screen.dart';
-import '../components/register_form.dart';
+import '../login/login_screen.dart';
+import 'register_form.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
-import 'package:nyp19vp_mb/login/views/login_screen.dart';
-import 'package:nyp19vp_mb/register/views/register_screen.dart';
+import 'package:nyp19vp_mb/views/login/login_screen.dart';
+import 'package:nyp19vp_mb/views/register/register_screen.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
