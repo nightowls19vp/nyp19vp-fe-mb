@@ -53,7 +53,7 @@ class Validators {
       return "Vui lòng nhập tên đăng nhập";
     } else if (!startCharacter.hasMatch(value!)) {
       return "Tên đăng nhập chỉ có thể bắt đầu và kết thúc bằng chữ hoặc số";
-    } else if (!endCharacter.hasMatch(value!)) {
+    } else if (!endCharacter.hasMatch(value)) {
       return "Tên đăng nhập chỉ có thể bắt đầu và kết thúc bằng chữ hoặc số";
     } else if (!characterRegex.hasMatch(value)) {
       return "Tên đăng nhập chỉ có thể chứa kí tự chữ, số, dấu gạch dưới và dấu chấm";
@@ -90,7 +90,7 @@ class Validators {
   }
 
   static String? validateName(String? value) {
-    RegExp characterRegex = RegExp(r'^[a-zA-Z0-9]+$');
+    RegExp characterRegex = RegExp(r'^\w+( \w+)*$');
     if (value?.length == 0) {
       return "Vui lòng nhập họ tên";
     } else if (!characterRegex.hasMatch(value!)) {

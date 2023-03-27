@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'views/login/login_screen.dart';
 import 'view_models/login/login_view_model.dart';
+import 'view_models/register/register_view_model.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         MultiProvider(
             providers: [
           ChangeNotifierProvider(create: (_) => LoginViewModel()),
+          ChangeNotifierProvider(create: (_) => RegisterViewModel()),
         ],
             child: MaterialApp(
               title: 'Flutter Demo',

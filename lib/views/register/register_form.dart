@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
 import 'package:nyp19vp_mb/widgets/text_field.dart';
+import 'package:provider/provider.dart';
 
+import '../../models/login_response_model.dart';
 import '../../res/colors.dart';
+import '../../view_models/register/register_view_model.dart';
 
 class RegisterForm extends StatefulWidget {
   @override
@@ -18,11 +22,13 @@ class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _pwdController = TextEditingController();
-  final TextEditingController _retypePwdController = TextEditingController();
+  final TextEditingController _dobController = TextEditingController();
 
   late bool show = false;
 
   Widget build(BuildContext context) {
+    final registerViewModel = Provider.of<RegisterViewModel>(context);
+
     return Center(
         child: Column(
       children: [
@@ -53,6 +59,14 @@ class _RegisterFormState extends State<RegisterForm> {
                             padding: EdgeInsets.only(
                                 left: 20.0, right: 20.0, bottom: 15.0),
                             child: CustomTextField(
+                              labelText: 'Mật khẩu',
+                              hintText: '',
+                              controller: _pwdController,
+                            )),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                left: 20.0, right: 20.0, bottom: 15.0),
+                            child: CustomTextField(
                               labelText: 'Họ tên',
                               hintText: '',
                               controller: _nameController,
@@ -75,28 +89,33 @@ class _RegisterFormState extends State<RegisterForm> {
                             )),
                         Padding(
                             padding: EdgeInsets.only(
-                                left: 20.0, right: 20.0, bottom: 15.0),
-                            child: CustomTextField(
-                              labelText: 'Mật khẩu',
-                              hintText: '',
-                              controller: _pwdController,
-                            )),
-                        Padding(
-                            padding: EdgeInsets.only(
                                 left: 20.0, right: 20.0, bottom: 35.0),
                             child: CustomTextField(
-                              labelText: 'Nhập lại mật khẩu',
+                              labelText: 'Ngày sinh',
                               hintText: '',
-                              controller: _retypePwdController,
+                              controller: _dobController,
                             )),
                         Padding(
                           padding: EdgeInsets.only(left: 20.0, right: 20.0),
                           child: SizedBox(
                             child: ElevatedButton(
-                              onPressed: () {
-                                // Map data = {
-                                //   'email':
-                                // }
+                              onPressed: () async {
+                                FocusManager.instance.primaryFocus?.unfocus();
+                                if (_formKey.currentState!.validate()) {
+                                  Map data = {
+                                    'username': _usernameController.toString(),
+                                    'password': _pwdController.text.toString(),
+                                    'name': _nameController.text.toString(),
+                                    'email': _emailController.text.toString(),
+                                    'phone': _phoneController.text.toString(),
+                                    'dob': DateFormat('yyyy-MMM-đTHH:mm:ss')
+                                        .format(DateTime.now()),
+                                  };
+
+                                  // LoginResponseModel response =
+                                  //     await registerViewModel.registerApi(
+                                  //         data, context);
+                                }
                                 // Navigator.pushNamed(context, RoutesName.home);
                               },
                               child: Text(

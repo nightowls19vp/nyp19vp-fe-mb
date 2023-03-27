@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nyp19vp_mb/res/colors.dart';
 
-import '../../res/colors.dart';
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
-class ForgotPasswordScreen extends StatefulWidget {
-  const ForgotPasswordScreen({super.key});
-
-  @override
-  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
-}
-
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +12,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Đặt lại mật khẩu',
+            Text('Trang chủ',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: AppColors.primary,

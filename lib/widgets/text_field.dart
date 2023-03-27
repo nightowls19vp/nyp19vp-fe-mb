@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
 import 'package:nyp19vp_mb/utils/validator.dart';
 
 class CustomTextField extends StatefulWidget {
   final String labelText;
   final String hintText;
+  final String? errorText;
   final TextEditingController controller;
   const CustomTextField(
       {super.key,
       required this.labelText,
       required this.hintText,
+      this.errorText,
       required this.controller});
 
   @override
@@ -21,7 +22,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   late bool _show = false;
   bool _obscureText = true;
 
-  final _formKey = GlobalKey<FormBuilderState>();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +53,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           fontSize: 18,
         ),
         hintText: widget.hintText,
+        errorText: widget.errorText,
         errorMaxLines: 2,
         suffixIcon: _show
             ? IconButton(
@@ -82,20 +84,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     : const Icon(Icons.clear, color: AppColors.text),
               )
             : null,
-        enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: AppColors.text,
-          ),
-        ),
-        focusedBorder: const UnderlineInputBorder(
+        enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: AppColors.text),
         ),
-        errorBorder: const UnderlineInputBorder(
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.text),
+        ),
+        errorBorder: UnderlineInputBorder(
           borderSide: BorderSide(
             color: AppColors.error,
           ),
         ),
-        focusedErrorBorder: const UnderlineInputBorder(
+        focusedErrorBorder: UnderlineInputBorder(
           borderSide: BorderSide(
             color: AppColors.error,
           ),
