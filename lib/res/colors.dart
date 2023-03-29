@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const background = Color.fromARGB(255, 255, 239, 218);
+  static const background = Color.fromARGB(255, 255, 255, 255);
 
   // Use for button or title/heading
   static const primary = Color(0xFFF58F00);

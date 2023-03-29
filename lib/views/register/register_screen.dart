@@ -7,6 +7,7 @@ import 'package:text_divider/text_divider.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
 
+import '../../utils/routes/routes_name.dart';
 import '../login/login_screen.dart';
 import 'register_form.dart';
 
@@ -39,7 +40,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          left: 20.0, right: 20.0, bottom: 10.0),
+                          left: 20.0, right: 20.0, bottom: 15.0),
                       child: SizedBox(
                         // width: 350,
                         // height: 20,
@@ -58,34 +59,75 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                        padding: const EdgeInsets.only(
-                            left: 30.0, right: 30.0, bottom: 10.0),
-                        child: SocialLoginButton(
-                          buttonType: SocialLoginButtonType.generalLogin,
-                          // backgroundColor: Color.fromARGB(255, 24, 119, 242),
-                          backgroundColor: Color(0xFFFFFFFF),
-                          text: 'Đăng ký với Google',
-                          textColor: AppColors.text,
-                          imagePath: 'assets/images/google.png',
-                          imageWidth: 33,
-                          borderRadius: 10,
-                          onPressed: () {},
+                        padding: const EdgeInsets.only(bottom: 15.0),
+                        child: InkWell(
+                          onTap: () {
+                            print('Google');
+                          },
+                          borderRadius: BorderRadius.circular(15),
+                          child: Container(
+                            width: screenWidth * 0.85,
+                            height: 50,
+                            child: Ink(
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFFFFFFF),
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                      color:
+                                          Color.fromARGB(255, 227, 227, 227))),
+                              child: Center(
+                                child: Wrap(
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  children: [
+                                    Image.asset('assets/images/google.png',
+                                        height:
+                                            24), // <-- Use 'Image.asset(...)' here
+                                    SizedBox(width: 12),
+                                    Text(
+                                      'Đăng nhập với Google',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         )),
                     Padding(
-                      padding: const EdgeInsets.only(
-                          left: 30.0, right: 30.0, bottom: 10.0),
-                      child: SocialLoginButton(
-                        buttonType: SocialLoginButtonType.generalLogin,
-                        // backgroundColor: Color.fromARGB(255, 24, 119, 242),
-                        backgroundColor: Color(0xFFFFFFFF),
-                        text: 'Đăng ký với Facebook',
-                        textColor: AppColors.text,
-                        imagePath: 'assets/images/facebook.png',
-                        imageWidth: 36,
-                        borderRadius: 10,
-                        onPressed: () {},
-                      ),
-                    ),
+                        padding: const EdgeInsets.only(bottom: 15.0),
+                        child: InkWell(
+                          onTap: () {
+                            print('Facebook');
+                          },
+                          borderRadius: BorderRadius.circular(15),
+                          child: Container(
+                            width: screenWidth * 0.85,
+                            height: 50,
+                            child: Ink(
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFFFFFFF),
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                      color:
+                                          Color.fromARGB(255, 227, 227, 227))),
+                              child: Center(
+                                child: Wrap(
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  children: [
+                                    Image.asset('assets/images/facebook.png',
+                                        height:
+                                            24), // <-- Use 'Image.asset(...)' here
+                                    SizedBox(width: 12),
+                                    Text(
+                                      'Đăng nhập với Facebook',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        )),
                     Padding(
                         padding: const EdgeInsets.only(
                             top: 20.0, left: 30.0, right: 30.0, bottom: 10.0),
@@ -99,24 +141,12 @@ class RegisterScreen extends StatelessWidget {
                                 fontSize: 16,
                               ),
                             ),
-                            // Padding(
-                            //   padding: const EdgeInsets.only(left: 20.0),
-                            //   child: Text(
-                            //     'Đăng ký',
-                            //     style: TextStyle(
-                            //         color: Colors.white,
-                            //         fontSize: 16,
-                            //         fontWeight: FontWeight.bold),
-                            //   ),
-                            // ),
                             Padding(
                                 padding: EdgeInsets.only(left: 20.0),
-                                child: GestureDetector(
+                                child: InkWell(
                                   onTap: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return LoginScreen();
-                                    }));
+                                    Navigator.pushNamed(
+                                        context, RoutesName.login);
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,

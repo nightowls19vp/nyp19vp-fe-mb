@@ -32,128 +32,173 @@ class _LoginFormState extends State<LoginForm> {
         child: Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(
-              left: 30.0, top: 15.0, right: 30.0, bottom: 15.0),
-          child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Form(
-                key: _formKey,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                            padding: EdgeInsets.only(
-                                left: 20.0, right: 20.0, bottom: 30.0),
-                            child: CustomTextField(
-                              labelText: 'Tên đăng nhập',
-                              hintText: '',
-                              controller: _emailController,
-                            )),
-                        Padding(
-                            padding: EdgeInsets.only(
-                                left: 20.0, right: 20.0, bottom: 20.0),
-                            child: SizedBox(
-                              child: CustomTextField(
-                                labelText: 'Mật khẩu',
-                                hintText: '',
-                                errorText: validatePwd ? _errorMsg : null,
-                                controller: _pwdController,
-                              ),
-                            )),
-                        Padding(
-                            padding: EdgeInsets.only(right: 20.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return ForgotPasswordScreen();
-                                }));
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text('Quên mật khẩu?',
-                                      style: TextStyle(
-                                        color: AppColors.text,
-                                        fontSize: 14,
-                                      )),
-                                ],
-                              ),
-                            )),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: 20.0, top: 20.0, right: 20.0, bottom: 0),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                child: ElevatedButton(
-                                  onPressed: () async {
-                                    _errorMsg = '';
-                                    FocusManager.instance.primaryFocus
-                                        ?.unfocus();
-                                    if (_formKey.currentState!.validate()) {
-                                      _formKey.currentState!.save();
-                                      Map data = {
-                                        'username':
-                                            _emailController.text.toString(),
-                                        'password':
-                                            _pwdController.text.toString(),
-                                      };
+            padding: const EdgeInsets.only(left: 30.0, top: 15.0, right: 30.0),
+            child: Form(
+              key: _formKey,
+              child: Padding(
+                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 30.0),
+                        child: CustomTextField(
+                          labelText: 'Tên đăng nhập',
+                          hintText: '',
+                          controller: _emailController,
+                        ),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(bottom: 30.0),
+                          child: CustomTextField(
+                            labelText: 'Mật khẩu',
+                            hintText: '',
+                            errorText: validatePwd ? _errorMsg : null,
+                            controller: _pwdController,
+                          )),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, RoutesName.forgetPwd);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text('Quên mật khẩu?',
+                                style: TextStyle(
+                                  color: AppColors.text,
+                                  fontSize: 14,
+                                )),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child: InkWell(
+                            onTap: () async {
+                              _errorMsg = '';
+                              FocusManager.instance.primaryFocus?.unfocus();
+                              // Navigator.pushNamed(context, RoutesName.home);
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+                                Map data = {
+                                  'username': _emailController.text.toString(),
+                                  'password': _pwdController.text.toString(),
+                                };
 
-                                      LoginResponseModel response =
-                                          await loginViewModel.loginApi(
-                                              data, context);
+                                LoginResponseModel response =
+                                    await loginViewModel.loginApi(
+                                        data, context);
 
-                                      if (response.statusCode == 401) {
-                                        setState(() {
-                                          // loginViewModel.setLoading(false);
-                                          validatePwd = true;
-                                          _errorMsg = "Mật khẩu không khớp";
-                                        });
-                                      } else if (response.statusCode == 404) {
-                                        setState(() {
-                                          // loginViewModel.setLoading(false);
-                                          validatePwd = true;
-                                          _errorMsg = "Tài khoản không tồn tại";
-                                        });
-                                      } else {
-                                        setState(() {
-                                          Navigator.pushNamed(
-                                              context, RoutesName.home);
-                                          validatePwd = false;
-                                          _errorMsg = "";
-                                        });
-                                      }
-                                    }
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    primary: AppColors.primary,
-                                    minimumSize: const Size.fromHeight(50),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          10), // <-- Radius
-                                    ),
-                                  ),
+                                if (response.statusCode == 401) {
+                                  setState(() {
+                                    // loginViewModel.setLoading(false);
+                                    validatePwd = true;
+                                    _errorMsg = "Mật khẩu không khớp";
+                                  });
+                                } else if (response.statusCode == 404) {
+                                  setState(() {
+                                    // loginViewModel.setLoading(false);
+                                    validatePwd = true;
+                                    _errorMsg = "Tài khoản không tồn tại";
+                                  });
+                                } else {
+                                  setState(() {
+                                    Navigator.pushNamed(
+                                        context, RoutesName.home);
+                                    validatePwd = false;
+                                    _errorMsg = "";
+                                  });
+                                }
+                              }
+                            },
+                            borderRadius: BorderRadius.circular(15),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.85,
+                              height: 50,
+                              child: Ink(
+                                decoration: BoxDecoration(
+                                  color: AppColors.primary,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(
                                   child: Text(
                                     'Đăng nhập',
                                     style: TextStyle(
                                         fontSize: 18,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ]),
-                ),
-              )),
-        ),
+                            ),
+                          )),
+                      // Padding(
+                      //   padding: EdgeInsets.only(top: 20.0),
+                      //   child: Column(
+                      //     children: [
+                      //       SizedBox(
+                      //         child: ElevatedButton(
+                      //           onPressed: () async {
+                      //             _errorMsg = '';
+                      //             FocusManager.instance.primaryFocus?.unfocus();
+                      //             // Navigator.pushNamed(context, RoutesName.home);
+                      //             if (_formKey.currentState!.validate()) {
+                      //               _formKey.currentState!.save();
+                      //               Map data = {
+                      //                 'username':
+                      //                     _emailController.text.toString(),
+                      //                 'password':
+                      //                     _pwdController.text.toString(),
+                      //               };
+
+                      //               LoginResponseModel response =
+                      //                   await loginViewModel.loginApi(
+                      //                       data, context);
+
+                      //               if (response.statusCode == 401) {
+                      //                 setState(() {
+                      //                   // loginViewModel.setLoading(false);
+                      //                   validatePwd = true;
+                      //                   _errorMsg = "Mật khẩu không khớp";
+                      //                 });
+                      //               } else if (response.statusCode == 404) {
+                      //                 setState(() {
+                      //                   // loginViewModel.setLoading(false);
+                      //                   validatePwd = true;
+                      //                   _errorMsg = "Tài khoản không tồn tại";
+                      //                 });
+                      //               } else {
+                      //                 setState(() {
+                      //                   Navigator.pushNamed(
+                      //                       context, RoutesName.home);
+                      //                   validatePwd = false;
+                      //                   _errorMsg = "";
+                      //                 });
+                      //               }
+                      //             }
+                      //           },
+                      //           style: ElevatedButton.styleFrom(
+                      //             primary: AppColors.primary,
+                      //             minimumSize: const Size.fromHeight(50),
+                      //             shape: RoundedRectangleBorder(
+                      //               borderRadius:
+                      //                   BorderRadius.circular(10), // <-- Radius
+                      //             ),
+                      //           ),
+                      //           child: Text(
+                      //             'Đăng nhập',
+                      //             style: TextStyle(
+                      //                 fontSize: 18,
+                      //                 fontWeight: FontWeight.bold),
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                    ]),
+              ),
+            )),
       ],
     ));
   }

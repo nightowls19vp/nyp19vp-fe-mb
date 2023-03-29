@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:nyp19vp_mb/view_models/login/login_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -9,6 +10,7 @@ import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
 import 'package:text_divider/text_divider.dart';
 
+import '../../utils/routes/routes_name.dart';
 import '../register/register_screen.dart';
 import 'login_form.dart';
 
@@ -41,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 20.0, right: 20.0, bottom: 10.0),
+                        left: 20.0, right: 20.0, bottom: 15.0),
                     child: SizedBox(
                       child: TextDivider.horizontal(
                         text: const Text(
@@ -58,35 +60,73 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.only(
-                          left: 30.0, right: 30.0, bottom: 10.0),
-                      child: SocialLoginButton(
-                        buttonType: SocialLoginButtonType.generalLogin,
-                        // backgroundColor: Color.fromARGB(255, 24, 119, 242),
-                        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                        text: 'Đăng nhập với Google',
-                        textColor: AppColors.text,
-                        imagePath: 'assets/images/google.png',
-                        imageWidth: 33,
-                        borderRadius: 10,
-                        onPressed: () {},
+                      padding: const EdgeInsets.only(bottom: 15.0),
+                      child: InkWell(
+                        onTap: () {
+                          print('Google');
+                        },
+                        borderRadius: BorderRadius.circular(15),
+                        child: Container(
+                          width: screenWidth * 0.85,
+                          height: 50,
+                          child: Ink(
+                            decoration: BoxDecoration(
+                                color: Color(0xFFFFFFFF),
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                    color: Color.fromARGB(255, 227, 227, 227))),
+                            child: Center(
+                              child: Wrap(
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  Image.asset('assets/images/google.png',
+                                      height:
+                                          24), // <-- Use 'Image.asset(...)' here
+                                  SizedBox(width: 12),
+                                  Text(
+                                    'Đăng nhập với Google',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       )),
                   Padding(
-                    padding: const EdgeInsets.only(
-                        left: 30.0, right: 30.0, bottom: 10.0),
-                    child: SocialLoginButton(
-                      buttonType: SocialLoginButtonType.generalLogin,
-                      // backgroundColor: Color.fromARGB(255, 24, 119, 242),
-                      backgroundColor: Color(0xFFFFFFFF),
-                      text: 'Đăng nhập với Facebook',
-                      textColor: AppColors.text,
-                      height: 50,
-                      imagePath: 'assets/images/facebook.png',
-                      imageWidth: 36,
-                      borderRadius: 10,
-                      onPressed: () {},
-                    ),
-                  ),
+                      padding: const EdgeInsets.only(bottom: 15.0),
+                      child: InkWell(
+                        onTap: () {
+                          print('Facebook');
+                        },
+                        borderRadius: BorderRadius.circular(15),
+                        child: Container(
+                          width: screenWidth * 0.85,
+                          height: 50,
+                          child: Ink(
+                            decoration: BoxDecoration(
+                                color: Color(0xFFFFFFFF),
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                    color: Color.fromARGB(255, 227, 227, 227))),
+                            child: Center(
+                              child: Wrap(
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  Image.asset('assets/images/facebook.png',
+                                      height:
+                                          24), // <-- Use 'Image.asset(...)' here
+                                  SizedBox(width: 12),
+                                  Text(
+                                    'Đăng nhập với Facebook',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      )),
                   Padding(
                       padding: const EdgeInsets.only(
                           top: 20.0, left: 30.0, right: 30.0, bottom: 10.0),
@@ -102,12 +142,10 @@ class LoginScreen extends StatelessWidget {
                           ),
                           Padding(
                               padding: EdgeInsets.only(left: 20.0),
-                              child: GestureDetector(
+                              child: InkWell(
                                 onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return RegisterScreen();
-                                  }));
+                                  Navigator.pushNamed(
+                                      context, RoutesName.register);
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,

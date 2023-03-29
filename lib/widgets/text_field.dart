@@ -7,12 +7,14 @@ class CustomTextField extends StatefulWidget {
   final String hintText;
   final String? errorText;
   final TextEditingController controller;
+  final String? date;
   const CustomTextField(
       {super.key,
       required this.labelText,
       required this.hintText,
       this.errorText,
-      required this.controller});
+      required this.controller,
+      this.date});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -73,10 +75,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 icon: (widget.labelText == 'Mật khẩu' ||
                         widget.labelText == 'Nhập lại mật khẩu')
                     ? (_obscureText
-                        ? const Icon(
+                        ? (const Icon(
                             Icons.visibility_off_outlined,
                             color: AppColors.text,
-                          )
+                          ))
                         : const Icon(
                             Icons.visibility_outlined,
                             color: AppColors.primary,
