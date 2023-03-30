@@ -6,7 +6,6 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:nyp19vp_mb/view_models/login/login_view_model.dart';
 import 'package:provider/provider.dart';
 
-import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
 import 'package:text_divider/text_divider.dart';
 

@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:text_divider/text_divider.dart';
-import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
 
 import '../../utils/routes/routes_name.dart';

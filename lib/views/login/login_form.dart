@@ -77,39 +77,39 @@ class _LoginFormState extends State<LoginForm> {
                             onTap: () async {
                               _errorMsg = '';
                               FocusManager.instance.primaryFocus?.unfocus();
-                              // Navigator.pushNamed(context, RoutesName.home);
-                              if (_formKey.currentState!.validate()) {
-                                _formKey.currentState!.save();
-                                Map data = {
-                                  'username': _emailController.text.toString(),
-                                  'password': _pwdController.text.toString(),
-                                };
+                              Navigator.pushNamed(context, RoutesName.home);
+                              // if (_formKey.currentState!.validate()) {
+                              //   _formKey.currentState!.save();
+                              //   Map data = {
+                              //     'username': _emailController.text.toString(),
+                              //     'password': _pwdController.text.toString(),
+                              //   };
 
-                                LoginResponseModel response =
-                                    await loginViewModel.loginApi(
-                                        data, context);
+                              //   LoginResponseModel response =
+                              //       await loginViewModel.loginApi(
+                              //           data, context);
 
-                                if (response.statusCode == 401) {
-                                  setState(() {
-                                    // loginViewModel.setLoading(false);
-                                    validatePwd = true;
-                                    _errorMsg = "Mật khẩu không khớp";
-                                  });
-                                } else if (response.statusCode == 404) {
-                                  setState(() {
-                                    // loginViewModel.setLoading(false);
-                                    validatePwd = true;
-                                    _errorMsg = "Tài khoản không tồn tại";
-                                  });
-                                } else {
-                                  setState(() {
-                                    Navigator.pushNamed(
-                                        context, RoutesName.home);
-                                    validatePwd = false;
-                                    _errorMsg = "";
-                                  });
-                                }
-                              }
+                              //   if (response.statusCode == 401) {
+                              //     setState(() {
+                              //       // loginViewModel.setLoading(false);
+                              //       validatePwd = true;
+                              //       _errorMsg = "Mật khẩu không khớp";
+                              //     });
+                              //   } else if (response.statusCode == 404) {
+                              //     setState(() {
+                              //       // loginViewModel.setLoading(false);
+                              //       validatePwd = true;
+                              //       _errorMsg = "Tài khoản không tồn tại";
+                              //     });
+                              //   } else {
+                              //     setState(() {
+                              //       Navigator.pushNamed(
+                              //           context, RoutesName.home);
+                              //       validatePwd = false;
+                              //       _errorMsg = "";
+                              //     });
+                              //   }
+                              // }
                             },
                             borderRadius: BorderRadius.circular(15),
                             child: Container(
