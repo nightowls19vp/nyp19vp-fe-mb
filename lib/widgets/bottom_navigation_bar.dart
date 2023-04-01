@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../res/colors.dart';
+import '../state/nav_bar_state.dart';
 
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key});
@@ -10,7 +12,6 @@ class CustomNavigationBar extends StatefulWidget {
 }
 
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
-  int _selectedIndex = 2;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
@@ -36,14 +37,10 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     ),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final navBarState = Provider.of<NavigationBarState>(context);
+
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -72,12 +69,14 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           // backgroundColor: Colors.pink,
         ),
       ],
-      currentIndex: _selectedIndex,
+      currentIndex: navBarState.currentIndex,
       backgroundColor: AppColors.background,
       selectedItemColor: Colors.amber[800],
       unselectedItemColor: AppColors.text,
       type: BottomNavigationBarType.fixed,
-      onTap: _onItemTapped,
+      onTap: (index) {
+        navBarState.updateCurrentIndex(index);
+      },
     );
   }
 }

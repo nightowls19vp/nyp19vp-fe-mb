@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
+import 'package:provider/provider.dart';
 
+import '../../state/nav_bar_state.dart';
 import '../../widgets/bottom_navigation_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -45,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final navBarState = Provider.of<NavigationBarState>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.background,
@@ -67,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _widgetOptions.elementAt(navBarState.currentIndex),
       ),
       bottomNavigationBar: CustomNavigationBar(),
     );

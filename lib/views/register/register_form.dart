@@ -105,9 +105,11 @@ class _RegisterFormState extends State<RegisterForm> {
                     InkWell(
                       onTap: () async {
                         FocusManager.instance.primaryFocus?.unfocus();
-                        await _selectDate(context);
-                        _dobController.text =
-                            DateFormat('yyyy/MM/dd').format(selectedDate);
+
+                        String selectedDate = _dobController.text;
+                        DateFormat inputFormat = DateFormat('yyyy/MM/dd');
+                        DateTime date = inputFormat.parse(selectedDate);
+
                         if (_formKey.currentState!.validate()) {
                           Map data = {
                             'username': _usernameController.text,
@@ -115,7 +117,7 @@ class _RegisterFormState extends State<RegisterForm> {
                             'name': _nameController.text,
                             'email': _emailController.text,
                             'phone': _phoneController.text,
-                            'dob': selectedDate.toIso8601String(),
+                            'dob': date.toIso8601String(),
                           };
 
                           RegisterRequestModel request = RegisterRequestModel(

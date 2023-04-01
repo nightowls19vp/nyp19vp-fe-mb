@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nyp19vp_mb/state/nav_bar_state.dart';
 import 'package:nyp19vp_mb/utils/routes/routes.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         MultiProvider(
             providers: [
           ChangeNotifierProvider(create: (_) => LoginViewModel()),
+          ChangeNotifierProvider(create: (_) => NavigationBarState()),
           ChangeNotifierProvider(create: (_) => RegisterViewModel()),
         ],
             child: MaterialApp(

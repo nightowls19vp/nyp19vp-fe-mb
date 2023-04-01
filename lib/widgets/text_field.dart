@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
 import 'package:nyp19vp_mb/utils/validator.dart';
 
@@ -28,8 +29,24 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime selectedDate = DateTime.now();
+
+    _selectDate(BuildContext context) async {
+      final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2025),
+      );
+      if (picked != null && picked != selectedDate)
+        setState(() {
+          selectedDate = picked;
+        });
+    }
+
     return TextFormField(
       // initialValue: 'Input your email',\
+      // readOnly: (widget.labelText == 'Ngày sinh') ? false : true,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -59,13 +76,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
         errorMaxLines: 2,
         suffixIcon: _show
             ? IconButton(
-                onPressed: () {
+                onPressed: () async {
                   if (widget.labelText == 'Mật khẩu' ||
                       widget.labelText == 'Nhập lại mật khẩu') {
                     setState(() {
                       _obscureText = !_obscureText;
                     });
-                  } else {
+                  }
+                  //  else if (widget.labelText == 'Ngày sinh') {
+                  //   await _selectDate(context);
+                  //   widget.controller.text =
+                  //       DateFormat('yyyy/MM/dd').format(selectedDate);
+                  // }
+                  else {
                     widget.controller.clear();
                     setState(() {
                       _show = !_show;
@@ -83,9 +106,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             Icons.visibility_outlined,
                             color: AppColors.primary,
                           ))
-                    : const Icon(Icons.clear, color: AppColors.text),
+                    : (widget.labelText == 'Ngày sinh')
+                        ? const Icon(Icons.calendar_month,
+                            color: AppColors.text)
+                        : const Icon(Icons.clear, color: AppColors.text),
               )
-            : null,
+            : (widget.labelText == 'Ngày sinh')
+                ? const Icon(Icons.calendar_month, color: AppColors.text)
+                : null,
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: AppColors.text),
         ),
