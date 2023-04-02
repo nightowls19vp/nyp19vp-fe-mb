@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:nyp19vp_mb/constants/text_field_type.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
 import 'package:nyp19vp_mb/utils/validator.dart';
 
 class CustomTextField extends StatefulWidget {
+  final TextFieldType type;
   final String labelText;
   final String hintText;
-  final String? errorText;
   final TextEditingController controller;
   final String? date;
   const CustomTextField(
       {super.key,
+      required this.type,
       required this.labelText,
       required this.hintText,
-      this.errorText,
       required this.controller,
       this.date});
 
@@ -46,7 +47,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
     return TextFormField(
       // initialValue: 'Input your email',\
-      // readOnly: (widget.labelText == 'Ngày sinh') ? false : true,
+      readOnly: (widget.type == TextFieldType.dob) ? true : false,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -59,9 +60,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
           });
         }
       },
+      onTap: () async {
+        if (widget.type == TextFieldType.dob) {
+          await _selectDate(context);
+          widget.controller.text =
+              DateFormat('yyyy/MM/dd').format(selectedDate);
+        }
+      },
       controller: widget.controller,
-      obscureText: (widget.labelText == 'Mật khẩu' ||
-              widget.labelText == 'Nhập lại mật khẩu')
+      obscureText: (widget.type == TextFieldType.passwordLogin ||
+              widget.type == TextFieldType.passwordRegister ||
+              widget.type == TextFieldType.retypePassword)
           ? _obscureText
           : !_obscureText,
       cursorColor: AppColors.text,
@@ -72,31 +81,26 @@ class _CustomTextFieldState extends State<CustomTextField> {
           fontSize: 18,
         ),
         hintText: widget.hintText,
-        errorText: widget.errorText,
         errorMaxLines: 2,
         suffixIcon: _show
             ? IconButton(
                 onPressed: () async {
-                  if (widget.labelText == 'Mật khẩu' ||
-                      widget.labelText == 'Nhập lại mật khẩu') {
+                  if (widget.type == TextFieldType.passwordLogin ||
+                      widget.type == TextFieldType.passwordRegister ||
+                      widget.type == TextFieldType.retypePassword) {
                     setState(() {
                       _obscureText = !_obscureText;
                     });
-                  }
-                  //  else if (widget.labelText == 'Ngày sinh') {
-                  //   await _selectDate(context);
-                  //   widget.controller.text =
-                  //       DateFormat('yyyy/MM/dd').format(selectedDate);
-                  // }
-                  else {
+                  } else {
                     widget.controller.clear();
                     setState(() {
                       _show = !_show;
                     });
                   }
                 },
-                icon: (widget.labelText == 'Mật khẩu' ||
-                        widget.labelText == 'Nhập lại mật khẩu')
+                icon: (widget.type == TextFieldType.passwordLogin ||
+                        widget.type == TextFieldType.passwordRegister ||
+                        widget.type == TextFieldType.retypePassword)
                     ? (_obscureText
                         ? (const Icon(
                             Icons.visibility_off_outlined,
@@ -106,12 +110,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             Icons.visibility_outlined,
                             color: AppColors.primary,
                           ))
-                    : (widget.labelText == 'Ngày sinh')
+                    : (widget.type == TextFieldType.dob)
                         ? const Icon(Icons.calendar_month,
                             color: AppColors.text)
                         : const Icon(Icons.clear, color: AppColors.text),
               )
-            : (widget.labelText == 'Ngày sinh')
+            : (widget.type == TextFieldType.dob)
                 ? const Icon(Icons.calendar_month, color: AppColors.text)
                 : null,
         enabledBorder: UnderlineInputBorder(
@@ -131,7 +135,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ),
         ),
       ),
-      validator: (value) => Validators.validate(widget.labelText, value),
+      validator: (value) => Validators.validate(widget.type, value),
     );
   }
 }

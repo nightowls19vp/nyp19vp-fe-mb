@@ -1,11 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:nyp19vp_mb/constants/status_type.dart';
+import 'package:nyp19vp_mb/utils/flush_bar.dart';
 
 import '../../models/login_response_model.dart';
-import '../../models/user_model.dart';
 import '../../repositories/auth_repository.dart';
 
 class LoginViewModel with ChangeNotifier {
@@ -26,6 +24,21 @@ class LoginViewModel with ChangeNotifier {
 
     Map<String, dynamic> eventMap = response;
     var loginResponse = LoginResponseModel.fromJson(eventMap);
+    switch (loginResponse.statusCode) {
+      case 200:
+        await showCustomizeFlushbar(
+            StatusType.success, 'Đăng nhập thành công', context);
+        break;
+      case 401:
+        await showCustomizeFlushbar(
+            StatusType.fail, 'Mật khẩu không đúng', context);
+        break;
+      case 404:
+        await showCustomizeFlushbar(
+            StatusType.fail, 'Tài khoản không tồn tại', context);
+        break;
+      default:
+    }
 
     return loginResponse;
   }

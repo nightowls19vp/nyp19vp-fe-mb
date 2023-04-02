@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nyp19vp_mb/constants/text_field_type.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
 import 'package:nyp19vp_mb/widgets/text_field.dart';
@@ -23,7 +24,6 @@ class _LoginFormState extends State<LoginForm> {
 
   late bool show = false;
   late bool validatePwd = false;
-  String _errorMsg = '';
 
   Widget build(BuildContext context) {
     final loginViewModel = Provider.of<LoginViewModel>(context);
@@ -36,24 +36,25 @@ class _LoginFormState extends State<LoginForm> {
             child: Form(
               key: _formKey,
               child: Padding(
-                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(bottom: 30.0),
                         child: CustomTextField(
+                          type: TextFieldType.username,
                           labelText: 'Tên đăng nhập',
                           hintText: '',
                           controller: _emailController,
                         ),
                       ),
                       Padding(
-                          padding: EdgeInsets.only(bottom: 30.0),
+                          padding: const EdgeInsets.only(bottom: 30.0),
                           child: CustomTextField(
+                            type: TextFieldType.passwordLogin,
                             labelText: 'Mật khẩu',
                             hintText: '',
-                            errorText: validatePwd ? _errorMsg : null,
                             controller: _pwdController,
                           )),
                       InkWell(
@@ -75,41 +76,40 @@ class _LoginFormState extends State<LoginForm> {
                           padding: const EdgeInsets.only(top: 20.0),
                           child: InkWell(
                             onTap: () async {
-                              _errorMsg = '';
                               FocusManager.instance.primaryFocus?.unfocus();
-                              Navigator.pushNamed(context, RoutesName.home);
-                              // if (_formKey.currentState!.validate()) {
-                              //   _formKey.currentState!.save();
-                              //   Map data = {
-                              //     'username': _emailController.text.toString(),
-                              //     'password': _pwdController.text.toString(),
-                              //   };
+                              // Navigator.pushNamed(context, RoutesName.home);
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+                                Map data = {
+                                  'username': _emailController.text.toString(),
+                                  'password': _pwdController.text.toString(),
+                                };
 
-                              //   LoginResponseModel response =
-                              //       await loginViewModel.loginApi(
-                              //           data, context);
+                                LoginResponseModel response =
+                                    await loginViewModel.loginApi(
+                                        data, context);
 
-                              //   if (response.statusCode == 401) {
-                              //     setState(() {
-                              //       // loginViewModel.setLoading(false);
-                              //       validatePwd = true;
-                              //       _errorMsg = "Mật khẩu không khớp";
-                              //     });
-                              //   } else if (response.statusCode == 404) {
-                              //     setState(() {
-                              //       // loginViewModel.setLoading(false);
-                              //       validatePwd = true;
-                              //       _errorMsg = "Tài khoản không tồn tại";
-                              //     });
-                              //   } else {
-                              //     setState(() {
-                              //       Navigator.pushNamed(
-                              //           context, RoutesName.home);
-                              //       validatePwd = false;
-                              //       _errorMsg = "";
-                              //     });
-                              //   }
-                              // }
+                                // if (response.statusCode == 401) {
+                                //   setState(() {
+                                //     // loginViewModel.setLoading(false);
+                                //     validatePwd = true;
+                                //     _errorMsg = "Mật khẩu không khớp";
+                                //   });
+                                // } else if (response.statusCode == 404) {
+                                //   setState(() {
+                                //     // loginViewModel.setLoading(false);
+                                //     validatePwd = true;
+                                //     _errorMsg = "Tài khoản không tồn tại";
+                                //   });
+                                // } else {
+                                //   setState(() {
+                                //     // Navigator.pushNamed(
+                                //     //     context, RoutesName.home);
+                                //     validatePwd = false;
+                                //     _errorMsg = "";
+                                //   });
+                                // }
+                              }
                             },
                             borderRadius: BorderRadius.circular(15),
                             child: Container(
@@ -120,7 +120,7 @@ class _LoginFormState extends State<LoginForm> {
                                   color: AppColors.primary,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                child: Center(
+                                child: const Center(
                                   child: Text(
                                     'Đăng nhập',
                                     style: TextStyle(

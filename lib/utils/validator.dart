@@ -1,24 +1,32 @@
+import 'package:nyp19vp_mb/constants/text_field_type.dart';
+
 class Validators {
-  static validate(String labelText, String? value) {
+  static validate(TextFieldType type, String? value) {
     String? result;
-    switch (labelText) {
-      case 'Tên đăng nhập':
+    switch (type) {
+      case TextFieldType.username:
         result = validateUsername(value);
         break;
-      case 'Mật khẩu':
-        result = validatePassword(value);
+      case TextFieldType.passwordLogin:
+        result = validatePassword(TextFieldType.passwordLogin, value);
         break;
-      case 'Nhập lại mật khẩu':
-        result = validatePassword(value);
+      case TextFieldType.passwordRegister:
+        result = validatePassword(TextFieldType.passwordRegister, value);
         break;
-      case 'Họ tên':
+      // case TextFieldType.retypePassword:
+      //   result = validatePassword(TextFieldType.retypePassword, value);
+      //   break;
+      case TextFieldType.name:
         result = validateName(value);
         break;
-      case 'Email':
+      case TextFieldType.email:
         result = validateEmail(value);
         break;
-      case 'Số điện thoại':
+      case TextFieldType.phone:
         result = validatePhone(value);
+        break;
+      case TextFieldType.dob:
+        result = validateDob(value);
         break;
       default:
         break;
@@ -74,19 +82,29 @@ class Validators {
     return null;
   }
 
-  static String? validatePassword(String? value) {
+  static String? validatePassword(TextFieldType type, String? value) {
     RegExp lengthRegex = RegExp(r'^.{8,255}$');
     RegExp pwdRegex =
         RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$&*])(?=.*[0-9]).+$');
 
-    if (value?.length == 0) {
-      return "Vui lòng nhập mật khẩu";
-    } else if (!pwdRegex.hasMatch(value!)) {
-      return "Mật khẩu phải chứa ít nhất 1 ký tự in hoa, 1 ký tự thường, 1 ký tự đặc biệt và 1 số";
-    } else if (!lengthRegex.hasMatch(value)) {
-      return "Mật khẩu phải có ít nhất 8 kí tự";
+    switch (type) {
+      case TextFieldType.passwordLogin:
+        if (value?.length == 0) {
+          return "Vui lòng nhập mật khẩu";
+        }
+        break;
+      case TextFieldType.passwordRegister:
+        if (value?.length == 0) {
+          return "Vui lòng nhập mật khẩu";
+        } else if (!pwdRegex.hasMatch(value!)) {
+          return "Mật khẩu phải chứa ít nhất 1 ký tự in hoa, 1 ký tự thường, 1 ký tự đặc biệt và 1 số";
+        } else if (!lengthRegex.hasMatch(value)) {
+          return "Mật khẩu phải có ít nhất 8 kí tự";
+        }
+        break;
+      default:
+        return null;
     }
-    return null;
   }
 
   static String? validateName(String? value) {
@@ -117,6 +135,13 @@ class Validators {
       return "Vui lòng nhập số điện thoại";
     } else if (!phoneRegex.hasMatch(value!)) {
       return "Số điện thoại không hợp lệ tại Việt Nam";
+    }
+    return null;
+  }
+
+  static String? validateDob(String? value) {
+    if (value?.length == 0) {
+      return "Vui lòng chọn ngày sinh";
     }
     return null;
   }

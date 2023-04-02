@@ -3,5 +3,6 @@ class RoutesName {
   static const String register = 'register_screen';
   static const String forgetPwd = 'forget_pwd_screen';
 
-  static const String home = 'home_sceen';
+  static const String home = 'home_screen';
+  static const String profile = 'profile_screen';
 }

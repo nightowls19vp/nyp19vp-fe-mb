@@ -1,26 +1,33 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:nyp19vp_mb/constants/status_type.dart';
+import 'package:nyp19vp_mb/res/colors.dart';
 
-void show_Custom_Flushbar(String message, BuildContext context) {
-  Flushbar(
-    duration: Duration(seconds: 3),
-    margin: EdgeInsets.all(30),
-    padding: EdgeInsets.all(15),
-    backgroundColor: Color.fromARGB(255, 57, 159, 103),
-    borderRadius: BorderRadius.circular(7),
+Future<void> showCustomizeFlushbar(
+    StatusType type, String errorMsg, BuildContext context) {
+  return Flushbar(
+    messageText: Text(
+      errorMsg,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 16.0,
+        color: Color(0xFFFEFEFE),
+        fontWeight: FontWeight.bold,
+      ),
+    ),
     boxShadows: [
       BoxShadow(
-        color: Colors.black45,
-        offset: Offset(3, 3),
-        blurRadius: 3,
-      ),
+        color: Colors.grey,
+        blurRadius: 5,
+      )
     ],
-    dismissDirection: FlushbarDismissDirection.HORIZONTAL,
-    forwardAnimationCurve: Curves.fastLinearToSlowEaseIn,
-    messageText: Text(
-      message,
-      style: TextStyle(
-          fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18),
-    ),
-  )..show(context);
+    duration: Duration(seconds: 2),
+    padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 26.0),
+    margin: EdgeInsets.all(10),
+    borderRadius: BorderRadius.circular(8.0),
+    backgroundColor:
+        (type == StatusType.fail) ? AppColors.error : AppColors.success,
+    flushbarPosition: FlushbarPosition.TOP,
+    forwardAnimationCurve: Curves.bounceIn,
+  ).show(context);
 }

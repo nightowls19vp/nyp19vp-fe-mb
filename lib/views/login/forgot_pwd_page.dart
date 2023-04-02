@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../constants/text_field_type.dart';
 import '../../res/colors.dart';
 import '../../widgets/text_field.dart';
 
@@ -38,9 +39,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   top: 50.0, left: 20.0, right: 20.0, bottom: 20.0),
               child: SizedBox(
                 child: CustomTextField(
+                  type: TextFieldType.username,
                   labelText: 'Tên đăng nhập',
                   hintText: '',
-                  errorText: null,
                   controller: _usernameController,
                 ),
               ),

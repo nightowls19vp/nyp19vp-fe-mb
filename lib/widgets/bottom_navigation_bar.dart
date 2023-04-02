@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 import 'package:provider/provider.dart';
 
 import '../res/colors.dart';
@@ -76,6 +77,25 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
       type: BottomNavigationBarType.fixed,
       onTap: (index) {
         navBarState.updateCurrentIndex(index);
+        // switch (navBarState.currentIndex) {
+        //   case 0:
+        //     Navigator.pushNamed(context, RoutesName.login);
+        //     break;
+        //   case 1:
+        //     Navigator.pushNamed(context, RoutesName.register);
+        //     break;
+        //   case 2:
+        //     Navigator.pushNamed(context, RoutesName.home);
+        //     break;
+        //   case 3:
+        //     Navigator.pushNamed(context, RoutesName.profile);
+        //     break;
+        //   case 4:
+        //     Navigator.pushNamed(context, RoutesName.forgetPwd);
+        //     break;
+        //   default:
+        //     break;
+        // }
       },
     );
   }

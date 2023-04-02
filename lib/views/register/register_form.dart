@@ -8,6 +8,7 @@ import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 import 'package:nyp19vp_mb/widgets/text_field.dart';
 import 'package:provider/provider.dart';
 
+import '../../constants/text_field_type.dart';
 import '../../models/login_response_model.dart';
 import '../../res/colors.dart';
 import '../../view_models/register/register_view_model.dart';
@@ -28,6 +29,15 @@ class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController _dobController = TextEditingController();
 
   late bool show = false;
+
+  bool userInteracts() {
+    return (_usernameController.text.isNotEmpty &&
+        _nameController.text.isNotEmpty &&
+        _emailController.text.isNotEmpty &&
+        _phoneController.text.isNotEmpty &&
+        _pwdController.text.isNotEmpty &&
+        _dobController.text.isNotEmpty);
+  }
 
   Widget build(BuildContext context) {
     final registerViewModel = Provider.of<RegisterViewModel>(context);
@@ -55,48 +65,54 @@ class _RegisterFormState extends State<RegisterForm> {
           child: Form(
             key: _formKey,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 20.0),
+              padding: const EdgeInsets.only(bottom: 20.0),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                        padding: EdgeInsets.only(bottom: 15.0),
+                        padding: const EdgeInsets.only(bottom: 15.0),
                         child: CustomTextField(
+                          type: TextFieldType.username,
                           labelText: 'Tên đăng nhập',
                           hintText: '',
                           controller: _usernameController,
                         )),
                     Padding(
-                        padding: EdgeInsets.only(bottom: 15.0),
+                        padding: const EdgeInsets.only(bottom: 15.0),
                         child: CustomTextField(
+                          type: TextFieldType.passwordRegister,
                           labelText: 'Mật khẩu',
                           hintText: '',
                           controller: _pwdController,
                         )),
                     Padding(
-                        padding: EdgeInsets.only(bottom: 15.0),
+                        padding: const EdgeInsets.only(bottom: 15.0),
                         child: CustomTextField(
+                          type: TextFieldType.name,
                           labelText: 'Họ tên',
                           hintText: '',
                           controller: _nameController,
                         )),
                     Padding(
-                        padding: EdgeInsets.only(bottom: 15.0),
+                        padding: const EdgeInsets.only(bottom: 15.0),
                         child: CustomTextField(
+                          type: TextFieldType.email,
                           labelText: 'Email',
                           hintText: '',
                           controller: _emailController,
                         )),
                     Padding(
-                        padding: EdgeInsets.only(bottom: 15.0),
+                        padding: const EdgeInsets.only(bottom: 15.0),
                         child: CustomTextField(
+                          type: TextFieldType.phone,
                           labelText: 'Số điện thoại',
                           hintText: '',
                           controller: _phoneController,
                         )),
                     Padding(
-                        padding: EdgeInsets.only(bottom: 35.0),
+                        padding: const EdgeInsets.only(bottom: 35.0),
                         child: CustomTextField(
+                          type: TextFieldType.dob,
                           labelText: 'Ngày sinh',
                           hintText: '',
                           controller: _dobController,
@@ -106,11 +122,11 @@ class _RegisterFormState extends State<RegisterForm> {
                       onTap: () async {
                         FocusManager.instance.primaryFocus?.unfocus();
 
-                        String selectedDate = _dobController.text;
-                        DateFormat inputFormat = DateFormat('yyyy/MM/dd');
-                        DateTime date = inputFormat.parse(selectedDate);
-
                         if (_formKey.currentState!.validate()) {
+                          String selectedDate = _dobController.text;
+                          DateFormat inputFormat = DateFormat('yyyy/MM/dd');
+                          DateTime date = inputFormat.parse(selectedDate);
+
                           Map data = {
                             'username': _usernameController.text,
                             'password': _pwdController.text,
@@ -150,7 +166,7 @@ class _RegisterFormState extends State<RegisterForm> {
                             color: AppColors.primary,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               'Đăng ký',
                               style: TextStyle(
