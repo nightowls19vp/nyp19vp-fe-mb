@@ -36,7 +36,6 @@ dependencies:
   another_flushbar: ^1.12.29
   flutter_signin_button: ^2.0.0
   flutter_vector_icons: ^2.0.0
-  icon_forest: ^1.1.8
   intl: ^0.17.0
   provider: ^6.0.5
   http: ^0.13.5
@@ -72,6 +71,7 @@ flutter:
   assets:
     - assets/images/facebook.png
     - assets/images/google.png
+    - assets/images/owl.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

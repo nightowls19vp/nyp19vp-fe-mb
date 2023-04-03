@@ -4,7 +4,7 @@ import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
 import 'package:nyp19vp_mb/widgets/text_field.dart';
 import 'package:provider/provider.dart';
-import '../../models/login_response_model.dart';
+import '../../models/auth_response_model.dart';
 import 'forgot_pwd_page.dart';
 import '../../view_models/login/login_view_model.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
@@ -41,7 +41,7 @@ class _LoginFormState extends State<LoginForm> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 30.0),
+                        padding: const EdgeInsets.only(bottom: 15.0),
                         child: CustomTextField(
                           type: TextFieldType.username,
                           labelText: 'Tên đăng nhập',
@@ -50,7 +50,7 @@ class _LoginFormState extends State<LoginForm> {
                         ),
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(bottom: 30.0),
+                          padding: const EdgeInsets.only(bottom: 15.0),
                           child: CustomTextField(
                             type: TextFieldType.passwordLogin,
                             labelText: 'Mật khẩu',
@@ -77,39 +77,39 @@ class _LoginFormState extends State<LoginForm> {
                           child: InkWell(
                             onTap: () async {
                               FocusManager.instance.primaryFocus?.unfocus();
-                              // Navigator.pushNamed(context, RoutesName.home);
-                              if (_formKey.currentState!.validate()) {
-                                _formKey.currentState!.save();
-                                Map data = {
-                                  'username': _emailController.text.toString(),
-                                  'password': _pwdController.text.toString(),
-                                };
+                              Navigator.pushNamed(context, RoutesName.home);
+                              // if (_formKey.currentState!.validate()) {
+                              //   _formKey.currentState!.save();
+                              //   Map data = {
+                              //     'username': _emailController.text.toString(),
+                              //     'password': _pwdController.text.toString(),
+                              //   };
 
-                                LoginResponseModel response =
-                                    await loginViewModel.loginApi(
-                                        data, context);
+                              //   AuthResponseModel response =
+                              //       await loginViewModel.loginApi(
+                              //           data, context);
 
-                                // if (response.statusCode == 401) {
-                                //   setState(() {
-                                //     // loginViewModel.setLoading(false);
-                                //     validatePwd = true;
-                                //     _errorMsg = "Mật khẩu không khớp";
-                                //   });
-                                // } else if (response.statusCode == 404) {
-                                //   setState(() {
-                                //     // loginViewModel.setLoading(false);
-                                //     validatePwd = true;
-                                //     _errorMsg = "Tài khoản không tồn tại";
-                                //   });
-                                // } else {
-                                //   setState(() {
-                                //     // Navigator.pushNamed(
-                                //     //     context, RoutesName.home);
-                                //     validatePwd = false;
-                                //     _errorMsg = "";
-                                //   });
-                                // }
-                              }
+                              // if (response.statusCode == 401) {
+                              //   setState(() {
+                              //     // loginViewModel.setLoading(false);
+                              //     validatePwd = true;
+                              //     _errorMsg = "Mật khẩu không khớp";
+                              //   });
+                              // } else if (response.statusCode == 404) {
+                              //   setState(() {
+                              //     // loginViewModel.setLoading(false);
+                              //     validatePwd = true;
+                              //     _errorMsg = "Tài khoản không tồn tại";
+                              //   });
+                              // } else {
+                              //   setState(() {
+                              //     // Navigator.pushNamed(
+                              //     //     context, RoutesName.home);
+                              //     validatePwd = false;
+                              //     _errorMsg = "";
+                              //   });
+                              // }
+                              // }
                             },
                             borderRadius: BorderRadius.circular(15),
                             child: Container(

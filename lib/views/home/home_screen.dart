@@ -13,38 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Quản lý gói',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Quản lý kho',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Trang chủ',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Tôi',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 4: Cái đặt',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final navBarState = Provider.of<NavigationBarState>(context);
@@ -65,12 +33,13 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(
               Icons.search_outlined,
               color: AppColors.primary,
+              size: 30,
             ),
           ),
         ],
       ),
       body: Center(
-        child: _widgetOptions.elementAt(navBarState.currentIndex),
+        child: navBarState.wigetOption(navBarState.currentIndex),
       ),
       bottomNavigationBar: CustomNavigationBar(),
     );

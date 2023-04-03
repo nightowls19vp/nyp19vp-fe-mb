@@ -9,7 +9,7 @@ import 'package:nyp19vp_mb/widgets/text_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/text_field_type.dart';
-import '../../models/login_response_model.dart';
+import '../../models/auth_response_model.dart';
 import '../../res/colors.dart';
 import '../../view_models/register/register_view_model.dart';
 
@@ -150,7 +150,7 @@ class _RegisterFormState extends State<RegisterForm> {
                           var json = jsonEncode(request.toJson());
 
                           print(json);
-                          LoginResponseModel response = await registerViewModel
+                          AuthResponseModel response = await registerViewModel
                               .registerApi(data, context);
 
                           print('Response: $response');

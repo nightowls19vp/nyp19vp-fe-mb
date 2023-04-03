@@ -25,6 +25,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             icon: Icon(Icons.arrow_back, color: AppColors.primary),
             onPressed: () => Navigator.of(context).pop(),
           ),
+          titleSpacing: 0,
           title: Text(
             'Đặt lại mật khẩu',
             style: TextStyle(color: AppColors.primary),
@@ -35,8 +36,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(
-                  top: 50.0, left: 20.0, right: 20.0, bottom: 20.0),
+              padding: EdgeInsets.all(30.0),
               child: SizedBox(
                 child: CustomTextField(
                   type: TextFieldType.username,
@@ -47,8 +47,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
-                  top: 50.0, left: 20.0, right: 20.0, bottom: 20.0),
+              padding: EdgeInsets.only(top: 20.0, left: 30.0, right: 30.0),
               child: Column(
                 children: [
                   SizedBox(

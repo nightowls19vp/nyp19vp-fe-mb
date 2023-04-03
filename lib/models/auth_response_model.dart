@@ -1,10 +1,10 @@
-class LoginResponseModel {
+class AuthResponseModel {
   int statusCode;
   String message;
   String? accessToken;
   String? refreshToken;
 
-  LoginResponseModel(
+  AuthResponseModel(
       {required this.statusCode,
       required this.message,
       this.accessToken,
@@ -18,7 +18,7 @@ class LoginResponseModel {
     return message;
   }
 
-  LoginResponseModel.fromJson(Map<String, dynamic> json)
+  AuthResponseModel.fromJson(Map<String, dynamic> json)
       : statusCode = json["statusCode"],
         message = json["message"],
         accessToken = json["accessToken"],

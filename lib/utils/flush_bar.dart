@@ -22,6 +22,7 @@ Future<void> showCustomizeFlushbar(
       )
     ],
     duration: Duration(seconds: 2),
+    animationDuration: Duration(milliseconds: 800),
     padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 26.0),
     margin: EdgeInsets.all(10),
     borderRadius: BorderRadius.circular(8.0),
