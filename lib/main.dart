@@ -22,20 +22,32 @@ class MyApp extends StatelessWidget {
         //       body: LoginScreen(),
         //     ));
 
-        MultiProvider(
-            providers: [
-          ChangeNotifierProvider(create: (_) => LoginViewModel()),
-          ChangeNotifierProvider(create: (_) => NavigationBarState()),
-          ChangeNotifierProvider(create: (_) => RegisterViewModel()),
-        ],
-            child: MaterialApp(
-              title: 'Flutter Demo',
-              debugShowCheckedModeBanner: false,
-              initialRoute: RoutesName.login,
-              onGenerateRoute: Routes.generateRoute,
-              home: Scaffold(
-                  // resizeToAvoidBottomInset: true,
-                  body: LoginScreen()),
-            ));
+        // MultiProvider(
+        //     providers: [
+        //   ChangeNotifierProvider(create: (_) => LoginViewModel()),
+        //   ChangeNotifierProvider(create: (_) => NavigationBarState()),
+        //   ChangeNotifierProvider(create: (_) => RegisterViewModel()),
+        // ],
+        //     child: MaterialApp(
+        //       title: 'Flutter Demo',
+        //       debugShowCheckedModeBanner: false,
+        //       initialRoute: RoutesName.login,
+        //       onGenerateRoute: Routes.generateRoute,
+        //       home: Scaffold(
+        //           // resizeToAvoidBottomInset: true,
+        //           body: LoginScreen()),
+        //     ));
+
+        MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("App link demo"),
+        ),
+        body: const Center(
+          child: Text("Homepage"),
+        ),
+      ),
+    );
   }
 }
