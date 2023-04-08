@@ -7,16 +7,15 @@ import 'package:nyp19vp_mb/utils/validator.dart';
 class CustomTextField extends StatefulWidget {
   final TextFieldType type;
   final String labelText;
-  final String hintText;
+  final String? hintText;
   final TextEditingController controller;
-  final String? date;
-  const CustomTextField(
-      {super.key,
-      required this.type,
-      required this.labelText,
-      required this.hintText,
-      required this.controller,
-      this.date});
+  const CustomTextField({
+    super.key,
+    required this.type,
+    required this.labelText,
+    this.hintText,
+    required this.controller,
+  });
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -46,27 +45,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
     }
 
     return TextFormField(
-      // initialValue: 'Input your email',\
       readOnly: (widget.type == TextFieldType.dob) ? true : false,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          setState(() {
-            _show = true;
-          });
-        } else {
-          setState(() {
-            _show = false;
-          });
-        }
-      },
-      onTap: () async {
-        if (widget.type == TextFieldType.dob) {
-          await _selectDate(context);
-          widget.controller.text =
-              DateFormat('yyyy/MM/dd').format(selectedDate);
-        }
-      },
       controller: widget.controller,
       obscureText: (widget.type == TextFieldType.passwordLogin ||
               widget.type == TextFieldType.passwordRegister ||
@@ -74,6 +54,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ? _obscureText
           : !_obscureText,
       cursorColor: AppColors.text,
+      keyboardType: (widget.type == TextFieldType.phone)
+          ? TextInputType.numberWithOptions()
+          : TextInputType.text,
       decoration: InputDecoration(
         labelText: widget.labelText,
         labelStyle: const TextStyle(
@@ -82,7 +65,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         hintText: widget.hintText,
         errorMaxLines: 2,
-        suffixIcon: _show
+        suffixIcon: widget.controller.text.isNotEmpty
             ? IconButton(
                 onPressed: () async {
                   if (widget.type == TextFieldType.passwordLogin ||
@@ -92,10 +75,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       _obscureText = !_obscureText;
                     });
                   } else {
-                    widget.controller.clear();
-                    setState(() {
-                      _show = !_show;
-                    });
+                    if (widget.type != TextFieldType.dob) {
+                      widget.controller.clear();
+                    } else if (widget.type == TextFieldType.dob) {
+                      await _selectDate(context);
+                      widget.controller.text =
+                          DateFormat('yyyy/MM/dd').format(selectedDate);
+                    }
                   }
                 },
                 icon: (widget.type == TextFieldType.passwordLogin ||
@@ -108,7 +94,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           ))
                         : const Icon(
                             Icons.visibility_outlined,
-                            color: AppColors.primary,
+                            color: AppColors.orange,
                           ))
                     : (widget.type == TextFieldType.dob)
                         ? const Icon(Icons.calendar_month,

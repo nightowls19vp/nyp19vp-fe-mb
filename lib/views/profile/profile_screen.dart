@@ -8,7 +8,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.background,
+      color: AppColors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -16,13 +16,13 @@ class ProfileScreen extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: AppColors.primary,
+                color: AppColors.orange,
                 width: 2.0,
               ),
             ),
             child: CircleAvatar(
               radius: 80,
-              backgroundColor: AppColors.background,
+              backgroundColor: AppColors.white,
               backgroundImage: AssetImage('assets/images/owl.png'),
             ),
           ),
@@ -34,7 +34,7 @@ class ProfileScreen extends StatelessWidget {
                 Text(
                   'Thông tin cá nhân',
                   style: TextStyle(
-                      color: AppColors.primary,
+                      color: AppColors.orange,
                       fontSize: 24,
                       fontWeight: FontWeight.bold),
                 ),
@@ -45,7 +45,7 @@ class ProfileScreen extends StatelessWidget {
                   child: Text(
                     'Chỉnh sửa',
                     style: TextStyle(
-                      color: AppColors.primary,
+                      color: AppColors.orange,
                       fontSize: 16,
                     ),
                   ),
@@ -58,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                   color: Color(0xFFFEEACD),
-                  border: Border.all(color: AppColors.primary),
+                  border: Border.all(color: AppColors.orange),
                   borderRadius: BorderRadius.circular(15)),
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -167,7 +167,7 @@ class ProfileScreen extends StatelessWidget {
                 Text(
                   'Tài khoản liên kết',
                   style: TextStyle(
-                      color: AppColors.primary,
+                      color: AppColors.orange,
                       fontSize: 24,
                       fontWeight: FontWeight.bold),
                 ),
@@ -179,7 +179,7 @@ class ProfileScreen extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                   color: Color(0xFFFEEACD),
-                  border: Border.all(color: AppColors.primary),
+                  border: Border.all(color: AppColors.orange),
                   borderRadius: BorderRadius.circular(15)),
               child: Padding(
                 padding: const EdgeInsets.all(15.0),

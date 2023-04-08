@@ -10,30 +10,25 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
 
-    final TextEditingController _nameController = TextEditingController();
-    final TextEditingController _emailController = TextEditingController();
-    final TextEditingController _phoneController = TextEditingController();
-    final TextEditingController _dobController = TextEditingController();
+    final _nameController = TextEditingController();
+    final _emailController = TextEditingController();
+    final _phoneController = TextEditingController();
+    final _dobController = TextEditingController();
+
+    _nameController.text = 'Hồ Ngọc Minh Châu';
+    _emailController.text = 'abc@xyz.com';
+    _phoneController.text = '0931564102';
+    _dobController.text = '19/11/2001';
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.background,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: Icon(
-            Icons.chevron_left,
-            color: AppColors.primary,
-            size: 30,
-          ),
-        ),
+        backgroundColor: AppColors.orange,
         titleSpacing: 0,
         title: Text(
           'Chỉnh sửa thông tin cá nhân',
           textAlign: TextAlign.start,
           style: TextStyle(
-            color: AppColors.primary,
+            color: AppColors.white,
           ),
         ),
       ),
@@ -52,7 +47,6 @@ class EditProfileScreen extends StatelessWidget {
                         child: CustomTextField(
                           type: TextFieldType.email,
                           labelText: 'Họ tên',
-                          hintText: '',
                           controller: _nameController,
                         )),
                     Padding(
@@ -60,7 +54,6 @@ class EditProfileScreen extends StatelessWidget {
                         child: CustomTextField(
                           type: TextFieldType.email,
                           labelText: 'Email',
-                          hintText: '',
                           controller: _emailController,
                         )),
                     Padding(
@@ -68,14 +61,12 @@ class EditProfileScreen extends StatelessWidget {
                       child: CustomTextField(
                         type: TextFieldType.phone,
                         labelText: 'Số điện thoại',
-                        hintText: '',
                         controller: _phoneController,
                       ),
                     ),
                     CustomTextField(
                       type: TextFieldType.dob,
                       labelText: 'Ngày sinh',
-                      hintText: '',
                       controller: _dobController,
                     ),
                   ],
@@ -91,7 +82,7 @@ class EditProfileScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      primary: AppColors.primary,
+                      primary: AppColors.orange,
                       minimumSize: const Size.fromHeight(50),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10), // <-- Radius

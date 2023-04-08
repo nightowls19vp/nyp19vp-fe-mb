@@ -4,6 +4,8 @@ import 'package:nyp19vp_mb/views/profile/profile_screen.dart';
 class NavigationBarState extends ChangeNotifier {
   int _currentIndex = 2;
 
+  var labelList = ['Quản lí gói', 'Quản lí kho', 'Trang chủ', 'Tôi', 'Cài đặt'];
+
   int get currentIndex => _currentIndex;
 
   Widget wigetOption(_currentIndex) {

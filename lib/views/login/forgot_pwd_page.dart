@@ -20,18 +20,18 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.background,
+          backgroundColor: AppColors.white,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: AppColors.primary),
+            icon: Icon(Icons.arrow_back, color: AppColors.orange),
             onPressed: () => Navigator.of(context).pop(),
           ),
           titleSpacing: 0,
           title: Text(
             'Đặt lại mật khẩu',
-            style: TextStyle(color: AppColors.primary),
+            style: TextStyle(color: AppColors.orange),
           ),
         ),
-        backgroundColor: AppColors.background,
+        backgroundColor: AppColors.white,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -41,7 +41,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 child: CustomTextField(
                   type: TextFieldType.username,
                   labelText: 'Tên đăng nhập',
-                  hintText: '',
                   controller: _usernameController,
                 ),
               ),
@@ -58,7 +57,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: AppColors.primary,
+                        primary: AppColors.orange,
                         minimumSize: const Size.fromHeight(50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10), // <-- Radius

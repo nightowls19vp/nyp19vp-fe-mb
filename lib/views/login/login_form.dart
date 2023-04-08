@@ -45,16 +45,14 @@ class _LoginFormState extends State<LoginForm> {
                         child: CustomTextField(
                           type: TextFieldType.username,
                           labelText: 'Tên đăng nhập',
-                          hintText: '',
                           controller: _emailController,
                         ),
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(bottom: 15.0),
+                          padding: const EdgeInsets.only(bottom: 30.0),
                           child: CustomTextField(
                             type: TextFieldType.passwordLogin,
                             labelText: 'Mật khẩu',
-                            hintText: '',
                             controller: _pwdController,
                           )),
                       InkWell(
@@ -78,38 +76,38 @@ class _LoginFormState extends State<LoginForm> {
                             onTap: () async {
                               FocusManager.instance.primaryFocus?.unfocus();
                               Navigator.pushNamed(context, RoutesName.home);
-                              // if (_formKey.currentState!.validate()) {
-                              //   _formKey.currentState!.save();
-                              //   Map data = {
-                              //     'username': _emailController.text.toString(),
-                              //     'password': _pwdController.text.toString(),
-                              //   };
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+                                Map data = {
+                                  'username': _emailController.text.toString(),
+                                  'password': _pwdController.text.toString(),
+                                };
 
-                              //   AuthResponseModel response =
-                              //       await loginViewModel.loginApi(
-                              //           data, context);
+                                // AuthResponseModel response =
+                                //     await loginViewModel.loginApi(
+                                //         data, context);
 
-                              // if (response.statusCode == 401) {
-                              //   setState(() {
-                              //     // loginViewModel.setLoading(false);
-                              //     validatePwd = true;
-                              //     _errorMsg = "Mật khẩu không khớp";
-                              //   });
-                              // } else if (response.statusCode == 404) {
-                              //   setState(() {
-                              //     // loginViewModel.setLoading(false);
-                              //     validatePwd = true;
-                              //     _errorMsg = "Tài khoản không tồn tại";
-                              //   });
-                              // } else {
-                              //   setState(() {
-                              //     // Navigator.pushNamed(
-                              //     //     context, RoutesName.home);
-                              //     validatePwd = false;
-                              //     _errorMsg = "";
-                              //   });
-                              // }
-                              // }
+                                // if (response.statusCode == 401) {
+                                //   setState(() {
+                                //     // loginViewModel.setLoading(false);
+                                //     validatePwd = true;
+                                //     _errorMsg = "Mật khẩu không khớp";
+                                //   });
+                                // } else if (response.statusCode == 404) {
+                                //   setState(() {
+                                //     // loginViewModel.setLoading(false);
+                                //     validatePwd = true;
+                                //     _errorMsg = "Tài khoản không tồn tại";
+                                //   });
+                                // } else {
+                                //   setState(() {
+                                //     // Navigator.pushNamed(
+                                //     //     context, RoutesName.home);
+                                //     validatePwd = false;
+                                //     _errorMsg = "";
+                                //   });
+                                // }
+                              }
                             },
                             borderRadius: BorderRadius.circular(15),
                             child: Container(
@@ -117,7 +115,7 @@ class _LoginFormState extends State<LoginForm> {
                               height: 50,
                               child: Ink(
                                 decoration: BoxDecoration(
-                                  color: AppColors.primary,
+                                  color: AppColors.orange,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: const Center(

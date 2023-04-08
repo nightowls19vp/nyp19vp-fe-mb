@@ -74,7 +74,6 @@ class _RegisterFormState extends State<RegisterForm> {
                         child: CustomTextField(
                           type: TextFieldType.username,
                           labelText: 'Tên đăng nhập',
-                          hintText: '',
                           controller: _usernameController,
                         )),
                     Padding(
@@ -82,7 +81,6 @@ class _RegisterFormState extends State<RegisterForm> {
                         child: CustomTextField(
                           type: TextFieldType.passwordRegister,
                           labelText: 'Mật khẩu',
-                          hintText: '',
                           controller: _pwdController,
                         )),
                     Padding(
@@ -90,7 +88,6 @@ class _RegisterFormState extends State<RegisterForm> {
                         child: CustomTextField(
                           type: TextFieldType.name,
                           labelText: 'Họ tên',
-                          hintText: '',
                           controller: _nameController,
                         )),
                     Padding(
@@ -98,7 +95,6 @@ class _RegisterFormState extends State<RegisterForm> {
                         child: CustomTextField(
                           type: TextFieldType.email,
                           labelText: 'Email',
-                          hintText: '',
                           controller: _emailController,
                         )),
                     Padding(
@@ -106,7 +102,6 @@ class _RegisterFormState extends State<RegisterForm> {
                         child: CustomTextField(
                           type: TextFieldType.phone,
                           labelText: 'Số điện thoại',
-                          hintText: '',
                           controller: _phoneController,
                         )),
                     Padding(
@@ -114,9 +109,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         child: CustomTextField(
                           type: TextFieldType.dob,
                           labelText: 'Ngày sinh',
-                          hintText: '',
                           controller: _dobController,
-                          date: '',
                         )),
                     InkWell(
                       onTap: () async {
@@ -163,7 +156,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         height: 50,
                         child: Ink(
                           decoration: BoxDecoration(
-                            color: AppColors.primary,
+                            color: AppColors.orange,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Center(

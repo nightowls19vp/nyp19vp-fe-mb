@@ -28,13 +28,13 @@ class LoginScreen extends StatelessWidget {
             width: screenWidth,
             height: screenHeight,
             child: Scaffold(
-              backgroundColor: AppColors.background,
+              backgroundColor: AppColors.white,
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Đăng nhập',
                       style: TextStyle(
-                          color: AppColors.primary,
+                          color: AppColors.orange,
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
                   SizedBox(
@@ -48,12 +48,12 @@ class LoginScreen extends StatelessWidget {
                         text: const Text(
                           'Hoặc',
                           style: TextStyle(
-                            color: AppColors.primary,
+                            color: AppColors.orange,
                             // fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
                         ),
-                        color: AppColors.primary,
+                        color: AppColors.orange,
                         thickness: 1.0,
                       ),
                     ),
@@ -135,7 +135,7 @@ class LoginScreen extends StatelessWidget {
                           Text(
                             'Chưa có tài khoản?',
                             style: TextStyle(
-                              color: AppColors.primary,
+                              color: AppColors.orange,
                               fontSize: 16,
                             ),
                           ),
@@ -152,7 +152,7 @@ class LoginScreen extends StatelessWidget {
                                     Text(
                                       'Đăng ký',
                                       style: TextStyle(
-                                          color: AppColors.primary,
+                                          color: AppColors.orange,
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold),
                                     ),

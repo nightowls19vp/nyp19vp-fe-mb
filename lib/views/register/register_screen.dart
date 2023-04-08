@@ -22,7 +22,7 @@ class RegisterScreen extends StatelessWidget {
       child: Scaffold(
           resizeToAvoidBottomInset: true,
           body: Scaffold(
-            backgroundColor: AppColors.background,
+            backgroundColor: AppColors.white,
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
@@ -31,7 +31,7 @@ class RegisterScreen extends StatelessWidget {
                   children: [
                     Text('Đăng ký',
                         style: TextStyle(
-                            color: AppColors.primary,
+                            color: AppColors.orange,
                             fontSize: 30,
                             fontWeight: FontWeight.bold)),
                     SizedBox(
@@ -47,12 +47,12 @@ class RegisterScreen extends StatelessWidget {
                           text: const Text(
                             'Hoặc',
                             style: TextStyle(
-                              color: AppColors.primary,
+                              color: AppColors.orange,
                               // fontWeight: FontWeight.bold,
                               fontSize: 16,
                             ),
                           ),
-                          color: AppColors.primary,
+                          color: AppColors.orange,
                           thickness: 1.0,
                         ),
                       ),
@@ -136,7 +136,7 @@ class RegisterScreen extends StatelessWidget {
                             Text(
                               'Đã có tài khoản?',
                               style: TextStyle(
-                                color: AppColors.primary,
+                                color: AppColors.orange,
                                 fontSize: 16,
                               ),
                             ),
@@ -153,7 +153,7 @@ class RegisterScreen extends StatelessWidget {
                                       Text(
                                         'Đăng nhập',
                                         style: TextStyle(
-                                            color: AppColors.primary,
+                                            color: AppColors.orange,
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold),
                                       ),
