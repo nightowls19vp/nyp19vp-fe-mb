@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
           'Megoo',
           textAlign: TextAlign.start,
           style: TextStyle(
-            color: AppColors.white,
+            color: AppColors.bgPrimary,
           ),
         ),
         titleSpacing: 0,
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {},
             icon: Icon(
               Icons.search_outlined,
-              color: AppColors.white,
+              color: AppColors.bgPrimary,
               size: 30,
             ),
           ),
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Center(
                       child: CircleAvatar(
                         radius: 80,
-                        backgroundColor: AppColors.white,
+                        backgroundColor: AppColors.bgPrimary,
                         backgroundImage: AssetImage('assets/images/owl.png'),
 
                         // backgroundImage:
@@ -65,7 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.only(top: 20.0),
                       child: Text(
                         'Hồ Ngọc Minh Châu',
-                        style: TextStyle(fontSize: 20, color: AppColors.white),
+                        style:
+                            TextStyle(fontSize: 20, color: AppColors.bgPrimary),
                       ),
                     ),
                   ],

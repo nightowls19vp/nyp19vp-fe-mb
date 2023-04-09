@@ -29,7 +29,11 @@ class LoginViewModel with ChangeNotifier {
       case 200:
         await showCustomizeFlushbar(
             StatusType.success, 'Đăng nhập thành công', context);
-        Navigator.pushNamed(context, RoutesName.home);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          RoutesName.home,
+          (route) => false,
+        );
         break;
       case 401:
         await showCustomizeFlushbar(

@@ -28,7 +28,7 @@ class EditProfileScreen extends StatelessWidget {
           'Chỉnh sửa thông tin cá nhân',
           textAlign: TextAlign.start,
           style: TextStyle(
-            color: AppColors.white,
+            color: AppColors.bgPrimary,
           ),
         ),
       ),

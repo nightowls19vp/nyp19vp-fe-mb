@@ -75,7 +75,12 @@ class _LoginFormState extends State<LoginForm> {
                           child: InkWell(
                             onTap: () async {
                               FocusManager.instance.primaryFocus?.unfocus();
-                              Navigator.pushNamed(context, RoutesName.home);
+                              // Navigator.pushNamed(context, RoutesName.home);
+                              Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                RoutesName.home,
+                                (route) => false,
+                              );
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
                                 Map data = {

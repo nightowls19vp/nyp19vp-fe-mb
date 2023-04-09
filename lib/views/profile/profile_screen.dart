@@ -8,7 +8,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.white,
+      color: AppColors.bgSecondary,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -17,12 +17,12 @@ class ProfileScreen extends StatelessWidget {
               shape: BoxShape.circle,
               border: Border.all(
                 color: AppColors.orange,
-                width: 2.0,
+                width: 1.0,
               ),
             ),
             child: CircleAvatar(
               radius: 80,
-              backgroundColor: AppColors.white,
+              backgroundColor: AppColors.bgPrimary,
               backgroundImage: AssetImage('assets/images/owl.png'),
             ),
           ),
@@ -30,13 +30,17 @@ class ProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.only(top: 30.0, left: 15.0, right: 15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.ideographic,
               children: [
-                Text(
-                  'Thông tin cá nhân',
-                  style: TextStyle(
-                      color: AppColors.orange,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold),
+                FittedBox(
+                  child: Text(
+                    'Thông tin cá nhân',
+                    style: TextStyle(
+                        color: AppColors.orange,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
                 InkWell(
                   onTap: () {
@@ -46,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
                     'Chỉnh sửa',
                     style: TextStyle(
                       color: AppColors.orange,
-                      fontSize: 16,
+                      fontSize: 14,
                     ),
                   ),
                 ),
@@ -57,8 +61,8 @@ class ProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: Container(
               decoration: BoxDecoration(
-                  color: Color(0xFFFEEACD),
-                  border: Border.all(color: AppColors.orange),
+                  color: AppColors.bgPrimary,
+                  // border: Border.all(color: AppColors.orange),
                   borderRadius: BorderRadius.circular(15)),
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -71,13 +75,15 @@ class ProfileScreen extends StatelessWidget {
                         Text(
                           'Tên đăng nhập:',
                           style: TextStyle(
-                            fontSize: 16,
+                            color: AppColors.text,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'chauho_1911',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(
+                              color: AppColors.textSecondary, fontSize: 14),
                         ),
                       ],
                     ),
@@ -90,13 +96,15 @@ class ProfileScreen extends StatelessWidget {
                         Text(
                           'Họ tên:',
                           style: TextStyle(
-                            fontSize: 16,
+                            color: AppColors.text,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Hồ Ngọc Minh Châu',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(
+                              color: AppColors.textSecondary, fontSize: 14),
                         ),
                       ],
                     ),
@@ -109,13 +117,15 @@ class ProfileScreen extends StatelessWidget {
                         Text(
                           'Email:',
                           style: TextStyle(
-                            fontSize: 16,
+                            color: AppColors.text,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'abc@xyz.com',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(
+                              color: AppColors.textSecondary, fontSize: 14),
                         ),
                       ],
                     ),
@@ -128,13 +138,15 @@ class ProfileScreen extends StatelessWidget {
                         Text(
                           'Số điện thoại:',
                           style: TextStyle(
-                            fontSize: 16,
+                            color: AppColors.text,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           '0931564102',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(
+                              color: AppColors.textSecondary, fontSize: 14),
                         ),
                       ],
                     ),
@@ -145,13 +157,15 @@ class ProfileScreen extends StatelessWidget {
                       Text(
                         'Ngày sinh: ',
                         style: TextStyle(
-                          fontSize: 16,
+                          color: AppColors.text,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
                         '19/11/2001',
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(
+                            color: AppColors.textSecondary, fontSize: 14),
                       ),
                     ],
                   ),
@@ -168,7 +182,7 @@ class ProfileScreen extends StatelessWidget {
                   'Tài khoản liên kết',
                   style: TextStyle(
                       color: AppColors.orange,
-                      fontSize: 24,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
               ],
@@ -178,8 +192,8 @@ class ProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: Container(
               decoration: BoxDecoration(
-                  color: Color(0xFFFEEACD),
-                  border: Border.all(color: AppColors.orange),
+                  color: AppColors.bgPrimary,
+                  // border: Border.all(color: AppColors.orange),
                   borderRadius: BorderRadius.circular(15)),
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -200,7 +214,8 @@ class ProfileScreen extends StatelessWidget {
                               Text(
                                 'Tài khoản Google',
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  color: AppColors.text,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -209,7 +224,8 @@ class ProfileScreen extends StatelessWidget {
                           Text(
                             'Liên kết',
                             style: TextStyle(
-                              fontSize: 16,
+                              color: AppColors.text,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           )
@@ -228,7 +244,8 @@ class ProfileScreen extends StatelessWidget {
                             Text(
                               'Tài khoản Facebook',
                               style: TextStyle(
-                                fontSize: 16,
+                                color: AppColors.text,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -237,7 +254,8 @@ class ProfileScreen extends StatelessWidget {
                         Text(
                           'Liên kết',
                           style: TextStyle(
-                            fontSize: 16,
+                            color: AppColors.text,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         )

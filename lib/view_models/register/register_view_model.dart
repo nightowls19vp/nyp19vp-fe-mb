@@ -24,7 +24,11 @@ class RegisterViewModel with ChangeNotifier {
       case 200:
         await showCustomizeFlushbar(
             StatusType.success, 'Đăng ký thành công', context);
-        Navigator.pushNamed(context, RoutesName.login);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          RoutesName.login,
+          (route) => false,
+        );
         break;
       default:
     }

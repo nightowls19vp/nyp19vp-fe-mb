@@ -22,7 +22,7 @@ class RegisterScreen extends StatelessWidget {
       child: Scaffold(
           resizeToAvoidBottomInset: true,
           body: Scaffold(
-            backgroundColor: AppColors.white,
+            backgroundColor: AppColors.bgPrimary,
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),

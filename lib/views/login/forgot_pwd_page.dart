@@ -20,7 +20,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.white,
+          backgroundColor: AppColors.bgPrimary,
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: AppColors.orange),
             onPressed: () => Navigator.of(context).pop(),
@@ -31,7 +31,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             style: TextStyle(color: AppColors.orange),
           ),
         ),
-        backgroundColor: AppColors.white,
+        backgroundColor: AppColors.bgPrimary,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

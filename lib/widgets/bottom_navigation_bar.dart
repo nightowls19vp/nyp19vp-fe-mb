@@ -46,7 +46,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         ),
       ],
       currentIndex: navBarState.currentIndex,
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.bgPrimary,
       selectedItemColor: AppColors.orange,
       unselectedItemColor: AppColors.text,
       type: BottomNavigationBarType.fixed,
