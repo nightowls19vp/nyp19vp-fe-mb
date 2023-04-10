@@ -6,6 +6,7 @@ class Validators {
     switch (type) {
       case TextFieldType.username:
         result = validateUsername(value);
+
         break;
       case TextFieldType.passwordLogin:
         result = validatePassword(TextFieldType.passwordLogin, value);
@@ -17,7 +18,7 @@ class Validators {
       //   result = validatePassword(TextFieldType.retypePassword, value);
       //   break;
       case TextFieldType.name:
-        result = validateName(value);
+        // result = validateName(value);
         break;
       case TextFieldType.email:
         result = validateEmail(value);
@@ -63,9 +64,11 @@ class Validators {
       return "Tên đăng nhập chỉ có thể bắt đầu và kết thúc bằng chữ hoặc số";
     } else if (!endCharacter.hasMatch(value)) {
       return "Tên đăng nhập chỉ có thể bắt đầu và kết thúc bằng chữ hoặc số";
-    } else if (!characterRegex.hasMatch(value)) {
-      return "Tên đăng nhập chỉ có thể chứa kí tự chữ, số, dấu gạch dưới và dấu chấm";
-    } else if (!doubleDotRegrex.hasMatch(value)) {
+    }
+    // else if (!characterRegex.hasMatch(value)) {
+    //   return "Tên đăng nhập chỉ có thể chứa kí tự chữ, số, dấu gạch dưới và dấu chấm";
+    // }
+    else if (!doubleDotRegrex.hasMatch(value)) {
       return "Tên đăng nhập không thể chứa nhiều dấu chấm liên tiếp";
     } else if (!doubleUnderscoreRegrex.hasMatch(value)) {
       return "Tên đăng nhập không thể chứa nhiều dấu gạch dưới liên tiếp";

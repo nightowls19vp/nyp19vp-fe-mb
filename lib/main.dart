@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nyp19vp_mb/res/colors.dart';
+import 'package:nyp19vp_mb/state/current_user_state.dart';
 import 'package:nyp19vp_mb/state/nav_bar_state.dart';
 import 'package:nyp19vp_mb/utils/routes/routes.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
@@ -26,9 +28,26 @@ class MyApp extends StatelessWidget {
             providers: [
           ChangeNotifierProvider(create: (_) => LoginViewModel()),
           ChangeNotifierProvider(create: (_) => NavigationBarState()),
+          ChangeNotifierProvider(create: (_) => CurUserState()),
           ChangeNotifierProvider(create: (_) => RegisterViewModel()),
         ],
             child: MaterialApp(
+              // theme: ThemeData(
+              //   useMaterial3: true,
+              //   colorScheme: ColorScheme.light(
+              //     brightness: Brightness.light,
+              //     primary: AppColors.orange,
+              //     onPrimary: AppColors.bgPrimary,
+              //     secondary: Colors.black,
+              //     onSecondary: Colors.black,
+              //     error: AppColors.error,
+              //     onError: AppColors.error,
+              //     background: Colors.white,
+              //     onBackground: AppColors.bgSecondary,
+              //     surface: AppColors.orange,
+              //     onSurface: AppColors.text,
+              //   ),
+              // ),
               title: 'Flutter Demo',
               debugShowCheckedModeBanner: false,
               initialRoute: RoutesName.login,

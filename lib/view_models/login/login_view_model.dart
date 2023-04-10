@@ -48,4 +48,9 @@ class LoginViewModel with ChangeNotifier {
 
     return loginResponse;
   }
+
+  Future<dynamic> validate(String token) async {
+    dynamic response = await _authRepo.validate(token);
+    return response;
+  }
 }

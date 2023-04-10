@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 import 'package:provider/provider.dart';
 
@@ -22,27 +23,22 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         BottomNavigationBarItem(
           icon: Icon(Icons.person_add_rounded),
           label: navBarState.labelList[0],
-          // backgroundColor: Colors.red,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.trolley),
+          icon: Icon(Icons.store_rounded),
           label: navBarState.labelList[1],
-          // backgroundColor: Colors.green,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: navBarState.labelList[2],
-          // backgroundColor: Colors.purple,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: navBarState.labelList[3],
-          // backgroundColor: Colors.pink,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),
           label: navBarState.labelList[4],
-          // backgroundColor: Colors.pink,
         ),
       ],
       currentIndex: navBarState.currentIndex,

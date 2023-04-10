@@ -143,10 +143,10 @@ class _RegisterFormState extends State<RegisterForm> {
                           var json = jsonEncode(request.toJson());
 
                           print(json);
-                          AuthResponseModel response = await registerViewModel
-                              .registerApi(data, context);
+                          // AuthResponseModel response = await registerViewModel
+                          //     .registerApi(data, context);
 
-                          print('Response: $response');
+                          // print('Response: $response');
                           // Navigator.pushNamed(context, RoutesName.home);
                         }
                       },

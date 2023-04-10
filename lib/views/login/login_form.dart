@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nyp19vp_mb/constants/text_field_type.dart';
+import 'package:nyp19vp_mb/models/validate_response_model.dart';
+import 'package:nyp19vp_mb/state/current_user_state.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
 import 'package:nyp19vp_mb/widgets/text_field.dart';
@@ -27,6 +29,7 @@ class _LoginFormState extends State<LoginForm> {
 
   Widget build(BuildContext context) {
     final loginViewModel = Provider.of<LoginViewModel>(context);
+    final curUser = Provider.of<CurUserState>(context);
 
     return Center(
         child: Column(
@@ -91,26 +94,13 @@ class _LoginFormState extends State<LoginForm> {
                                 // AuthResponseModel response =
                                 //     await loginViewModel.loginApi(
                                 //         data, context);
-
-                                // if (response.statusCode == 401) {
-                                //   setState(() {
-                                //     // loginViewModel.setLoading(false);
-                                //     validatePwd = true;
-                                //     _errorMsg = "Mật khẩu không khớp";
-                                //   });
-                                // } else if (response.statusCode == 404) {
-                                //   setState(() {
-                                //     // loginViewModel.setLoading(false);
-                                //     validatePwd = true;
-                                //     _errorMsg = "Tài khoản không tồn tại";
-                                //   });
-                                // } else {
-                                //   setState(() {
-                                //     // Navigator.pushNamed(
-                                //     //     context, RoutesName.home);
-                                //     validatePwd = false;
-                                //     _errorMsg = "";
-                                //   });
+                                // print("Access token: ${response.accessToken}");
+                                // curUser.accessToken = response.accessToken;
+                                // String token = '${curUser.accessToken}';
+                                // if (token.isNotEmpty) {
+                                //   dynamic validateRes =
+                                //       await loginViewModel.validate(token);
+                                //   print(validateRes);
                                 // }
                               }
                             },

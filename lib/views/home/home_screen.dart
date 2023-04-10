@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nyp19vp_mb/models/auth_response_model.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
+import 'package:nyp19vp_mb/widgets/drawer_navigation.dart';
 import 'package:provider/provider.dart';
 
 import '../../state/nav_bar_state.dart';
@@ -18,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final navBarState = Provider.of<NavigationBarState>(context);
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: AppColors.orange,
         title: Text(
           'Megoo',
@@ -38,64 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            SizedBox(
-              height: 280,
-              child: DrawerHeader(
-                decoration: BoxDecoration(
-                  color: AppColors.orange,
-                ),
-                child: Column(
-                  children: [
-                    Center(
-                      child: CircleAvatar(
-                        radius: 80,
-                        backgroundColor: AppColors.bgPrimary,
-                        backgroundImage: AssetImage('assets/images/owl.png'),
-
-                        // backgroundImage:
-                        //     NetworkImage('https://via.placeholder.com/150'),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: Text(
-                        'Hồ Ngọc Minh Châu',
-                        style:
-                            TextStyle(fontSize: 20, color: AppColors.bgPrimary),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: CustomDrawerNavigation(),
       body: Center(
-        child: navBarState.wigetOption(navBarState.currentIndex),
+        child: navBarState.widgetOption(navBarState.currentIndex),
       ),
       bottomNavigationBar: CustomNavigationBar(),
     );

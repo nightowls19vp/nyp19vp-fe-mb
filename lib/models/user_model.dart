@@ -1,14 +1,17 @@
-class User {
-  final String username;
-  final String name;
-  final String email;
-  final String phone;
-  final String password;
+class UserModel {
+  String? username;
+  String? name;
+  String? email;
+  String? phone;
+  String? password;
+  String? dob;
 
-  User(
-      {required this.username,
-      required this.name,
-      required this.email,
-      required this.phone,
-      required this.password});
+  UserModel({
+    this.username,
+    this.name,
+    this.email,
+    this.phone,
+    this.password,
+    this.dob,
+  });
 }

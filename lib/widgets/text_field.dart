@@ -37,6 +37,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
         initialDate: selectedDate,
         firstDate: DateTime(2000),
         lastDate: DateTime(2025),
+        builder: (context, child) {
+          return Theme(
+              data: ThemeData.light().copyWith(
+                useMaterial3: true,
+                colorScheme: ColorScheme.light(
+                  primary: AppColors.orange, // header background color
+                  onPrimary: AppColors.bgPrimary, // header text color
+                  onSurface: AppColors.text, // body text color
+                ),
+              ),
+              child: child!);
+        },
       );
       if (picked != null && picked != selectedDate)
         setState(() {
@@ -45,6 +57,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
     }
 
     return TextFormField(
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          setState(() {
+            _show = true;
+          });
+        } else {
+          setState(() {
+            _show = false;
+          });
+        }
+      },
       readOnly: (widget.type == TextFieldType.dob) ? true : false,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: widget.controller,
@@ -65,7 +88,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         hintText: widget.hintText,
         errorMaxLines: 2,
-        suffixIcon: widget.controller.text.isNotEmpty
+        suffixIcon: _show
             ? IconButton(
                 onPressed: () async {
                   if (widget.type == TextFieldType.passwordLogin ||

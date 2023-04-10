@@ -26,7 +26,7 @@ class _SettingItemState extends State<SettingItem> {
               widget.title,
               style: TextStyle(
                 color: AppColors.text,
-                fontSize: 20,
+                fontSize: 18,
               ),
             ),
             Icon(

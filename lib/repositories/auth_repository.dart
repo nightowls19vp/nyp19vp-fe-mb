@@ -24,4 +24,14 @@ class AuthRepository {
       throw e;
     }
   }
+
+  Future<dynamic> validate(String token) async {
+    try {
+      dynamic response = await _apiServices.getGetApiResponse(
+          ApiUrl.validateApiEndPoint, token);
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
 }

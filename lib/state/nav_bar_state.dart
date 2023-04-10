@@ -9,7 +9,7 @@ class NavigationBarState extends ChangeNotifier {
 
   int get currentIndex => _currentIndex;
 
-  Widget wigetOption(_currentIndex) {
+  Widget widgetOption(_currentIndex) {
     switch (_currentIndex) {
       case 0:
         return Container(
