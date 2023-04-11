@@ -68,6 +68,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
           });
         }
       },
+      onTap: () async {
+        if (widget.type == TextFieldType.dob) {
+          await _selectDate(context);
+          widget.controller.text =
+              DateFormat('yyyy/MM/dd').format(selectedDate);
+        }
+      },
       readOnly: (widget.type == TextFieldType.dob) ? true : false,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: widget.controller,
@@ -100,11 +107,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   } else {
                     if (widget.type != TextFieldType.dob) {
                       widget.controller.clear();
-                    } else if (widget.type == TextFieldType.dob) {
-                      await _selectDate(context);
-                      widget.controller.text =
-                          DateFormat('yyyy/MM/dd').format(selectedDate);
                     }
+                    // else if (widget.type == TextFieldType.dob) {
+                    //   await _selectDate(context);
+                    //   widget.controller.text =
+                    //       DateFormat('yyyy/MM/dd').format(selectedDate);
+                    // }
                   }
                 },
                 icon: (widget.type == TextFieldType.passwordLogin ||

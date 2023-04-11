@@ -29,6 +29,7 @@ class AuthRepository {
     try {
       dynamic response = await _apiServices.getGetApiResponse(
           ApiUrl.validateApiEndPoint, token);
+      // print("Auth repo: ${response}");
       return response;
     } catch (e) {
       throw e;

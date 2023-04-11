@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nyp19vp_mb/constants/status_type.dart';
+import 'package:nyp19vp_mb/models/validate_response_model.dart';
 import 'package:nyp19vp_mb/utils/flush_bar.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 
@@ -21,36 +22,41 @@ class LoginViewModel with ChangeNotifier {
   Future<dynamic> loginApi(dynamic data, BuildContext context) async {
     // setLoading(true);
 
-    dynamic response = await _authRepo.loginApi(data);
-
-    Map<String, dynamic> eventMap = response;
-    var loginResponse = AuthResponseModel.fromJson(eventMap);
-    switch (loginResponse.statusCode) {
-      case 200:
-        await showCustomizeFlushbar(
-            StatusType.success, 'Đăng nhập thành công', context);
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          RoutesName.home,
-          (route) => false,
-        );
-        break;
-      case 401:
-        await showCustomizeFlushbar(
-            StatusType.fail, 'Mật khẩu không đúng', context);
-        break;
-      case 404:
-        await showCustomizeFlushbar(
-            StatusType.fail, 'Tài khoản không tồn tại', context);
-        break;
-      default:
+    try {
+      dynamic response = await _authRepo.loginApi(data);
+      Map<String, dynamic> eventMap = response;
+      var loginResponse = AuthResponseModel.fromJson(eventMap);
+      switch (loginResponse.statusCode) {
+        case 200:
+          await showCustomizeFlushbar(
+              StatusType.success, 'Đăng nhập thành công', context);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            RoutesName.home,
+            (route) => false,
+          );
+          break;
+        case 401:
+          await showCustomizeFlushbar(
+              StatusType.fail, 'Mật khẩu không đúng', context);
+          break;
+        case 404:
+          await showCustomizeFlushbar(
+              StatusType.fail, 'Tài khoản không tồn tại', context);
+          break;
+        default:
+      }
+      return loginResponse;
+    } catch (e) {
+      print(e);
     }
-
-    return loginResponse;
   }
 
   Future<dynamic> validate(String token) async {
     dynamic response = await _authRepo.validate(token);
-    return response;
+    Map<String, dynamic> eventMap = response;
+    var validateResponse = ValidateResponseModel.fromJson(eventMap);
+    print(validateResponse.user);
+    return validateResponse;
   }
 }

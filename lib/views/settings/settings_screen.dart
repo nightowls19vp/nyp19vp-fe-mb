@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
+import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
 import 'package:nyp19vp_mb/widgets/setting_item.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -133,8 +134,11 @@ class SettingsScreen extends StatelessWidget {
                             style: TextButton.styleFrom(
                               foregroundColor: AppColors.orange,
                             ),
-                            onPressed: () =>
-                                Navigator.pop(context, 'Đăng xuất'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, RoutesName.login);
+                              print("logout");
+                              // Navigator.pop(context, 'Đăng xuất');
+                            },
                             child: const Text(
                               'Đăng xuất',
                               style: TextStyle(
@@ -156,7 +160,7 @@ class SettingsScreen extends StatelessWidget {
                     color: AppColors.orange,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
                       'Đăng xuất',
                       style: TextStyle(

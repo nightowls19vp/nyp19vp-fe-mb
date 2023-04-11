@@ -79,11 +79,12 @@ class _LoginFormState extends State<LoginForm> {
                             onTap: () async {
                               FocusManager.instance.primaryFocus?.unfocus();
                               // Navigator.pushNamed(context, RoutesName.home);
-                              Navigator.pushNamedAndRemoveUntil(
-                                context,
-                                RoutesName.home,
-                                (route) => false,
-                              );
+                              // Navigator.pushNamedAndRemoveUntil(
+                              //   context,
+                              //   RoutesName.home,
+                              //   (route) => false,
+                              // );
+
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
                                 Map data = {
@@ -91,17 +92,23 @@ class _LoginFormState extends State<LoginForm> {
                                   'password': _pwdController.text.toString(),
                                 };
 
-                                // AuthResponseModel response =
-                                //     await loginViewModel.loginApi(
-                                //         data, context);
+                                AuthResponseModel response =
+                                    await loginViewModel.loginApi(
+                                        data, context);
                                 // print("Access token: ${response.accessToken}");
-                                // curUser.accessToken = response.accessToken;
-                                // String token = '${curUser.accessToken}';
-                                // if (token.isNotEmpty) {
-                                //   dynamic validateRes =
-                                //       await loginViewModel.validate(token);
-                                //   print(validateRes);
-                                // }
+
+                                curUser.accessToken = response.accessToken;
+                                String token = '${curUser.accessToken}';
+                                // print("LGF before validate: ${token}");
+                                if (token.isNotEmpty) {
+                                  ValidateResponseModel validateRes =
+                                      await loginViewModel.validate(token);
+
+                                  curUser.user = validateRes.user;
+                                  print(
+                                      "validate res: ${validateRes.user?.name}");
+                                  print("cur user: ${curUser.user?.name}");
+                                }
                               }
                             },
                             borderRadius: BorderRadius.circular(15),

@@ -21,7 +21,7 @@ class RegisterViewModel with ChangeNotifier {
     print(requestResponse.statusCode);
 
     switch (requestResponse.statusCode) {
-      case 200:
+      case 201:
         await showCustomizeFlushbar(
             StatusType.success, 'Đăng ký thành công', context);
         Navigator.pushNamedAndRemoveUntil(

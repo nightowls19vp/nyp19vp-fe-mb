@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:nyp19vp_mb/constants/text_field_type.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
+import 'package:nyp19vp_mb/state/current_user_state.dart';
 import 'package:nyp19vp_mb/widgets/text_field.dart';
+import 'package:provider/provider.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -15,10 +18,19 @@ class EditProfileScreen extends StatelessWidget {
     final _phoneController = TextEditingController();
     final _dobController = TextEditingController();
 
-    _nameController.text = 'Hồ Ngọc Minh Châu';
-    _emailController.text = 'abc@xyz.com';
-    _phoneController.text = '0931564102';
-    _dobController.text = '19/11/2001';
+    final curUser = Provider.of<CurUserState>(context);
+    dynamic name = curUser.user!.name;
+    dynamic email = curUser.user!.email;
+    dynamic dobISO = curUser.user!.dob;
+    dynamic dateTime = DateTime.parse(dobISO);
+    dynamic dob = DateFormat('dd/MM/yyyy').format(dateTime);
+    dynamic phone = curUser.user!.phone;
+    dynamic avatar = curUser.user!.avatar;
+
+    _nameController.text = name;
+    _emailController.text = email;
+    _phoneController.text = phone;
+    _dobController.text = dob;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:nyp19vp_mb/res/colors.dart';
 import 'package:nyp19vp_mb/state/current_user_state.dart';
 import 'package:nyp19vp_mb/utils/routes/routes_name.dart';
@@ -10,8 +11,14 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loginViewModel = Provider.of<LoginViewModel>(context);
-    final navBarState = Provider.of<CurUserState>(context);
+    final curUser = Provider.of<CurUserState>(context);
+    dynamic name = curUser.user!.name;
+    dynamic email = curUser.user!.email;
+    dynamic dobISO = curUser.user!.dob;
+    dynamic dateTime = DateTime.parse(dobISO);
+    dynamic dob = DateFormat('dd/MM/yyyy').format(dateTime);
+    dynamic phone = curUser.user!.phone;
+    dynamic avatar = curUser.user!.avatar;
 
     return Container(
       color: AppColors.bgSecondary,
@@ -29,7 +36,8 @@ class ProfileScreen extends StatelessWidget {
             child: CircleAvatar(
               radius: 80,
               backgroundColor: AppColors.bgPrimary,
-              backgroundImage: AssetImage('assets/images/owl.png'),
+              // backgroundImage: AssetImage('assets/images/owl.png'),
+              backgroundImage: NetworkImage(avatar),
             ),
           ),
           Padding(
@@ -73,27 +81,27 @@ class ProfileScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Column(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Tên đăng nhập:',
-                          style: TextStyle(
-                            color: AppColors.text,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'chauho_1911',
-                          style: TextStyle(
-                              color: AppColors.textSecondary, fontSize: 14),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(bottom: 15.0),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Text(
+                  //         'Tên đăng nhập:',
+                  //         style: TextStyle(
+                  //           color: AppColors.text,
+                  //           fontSize: 16,
+                  //           fontWeight: FontWeight.bold,
+                  //         ),
+                  //       ),
+                  //       Text(
+                  //         'chauho_1911',
+                  //         style: TextStyle(
+                  //             color: AppColors.textSecondary, fontSize: 14),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 15.0),
                     child: Row(
@@ -108,7 +116,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Hồ Ngọc Minh Châu',
+                          name,
                           style: TextStyle(
                               color: AppColors.textSecondary, fontSize: 14),
                         ),
@@ -129,9 +137,11 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'abc@xyz.com',
+                          email,
                           style: TextStyle(
-                              color: AppColors.textSecondary, fontSize: 14),
+                            color: AppColors.textSecondary,
+                            fontSize: 16,
+                          ),
                         ),
                       ],
                     ),
@@ -150,9 +160,11 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '0931564102',
+                          phone,
                           style: TextStyle(
-                              color: AppColors.textSecondary, fontSize: 14),
+                            color: AppColors.textSecondary,
+                            fontSize: 16,
+                          ),
                         ),
                       ],
                     ),
@@ -169,7 +181,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '19/11/2001',
+                        dob.toString(),
                         style: TextStyle(
                           color: AppColors.textSecondary,
                           fontSize: 16,
